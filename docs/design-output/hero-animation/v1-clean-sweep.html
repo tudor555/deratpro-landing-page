@@ -1,0 +1,1071 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- STITCH_THREEJS_START:ANIMATION_28 class="fixed inset-0 w-full h-full bg-transparent" -->
+    <div
+      class="fixed inset-0 w-full h-full bg-transparent"
+      style="display: block"
+    >
+      <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+      <div
+        id="threejs-container-ANIMATION_28"
+        style="width: 100%; height: 100%"
+      ></div>
+      <script>
+        (function () {
+          const container = document.getElementById(
+            "threejs-container-ANIMATION_28",
+          );
+          const devicePixelRatio = window.devicePixelRatio || 1;
+          // "Clean Sweep" — 12-second looping 3D interactive hero scene for DeratPro
+          // Services: Deratizare (Mouse), Dezinsecție (Cockroach & Mosquito), Dezinfecție (Wobbly translucent Microbes/Viruses)
+          // Cursor as spray nozzle + automatic left-to-right mist sweep + dissolve into glowing mint sparkles + clean light sweep
+
+          (function () {
+            const container =
+              document.getElementById("threejs-container-ANIMATION_27") ||
+              document.body;
+            const width = container.clientWidth || window.innerWidth;
+            const height = container.clientHeight || window.innerHeight;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+              40,
+              width / height,
+              0.1,
+              1000,
+            );
+            camera.position.set(0, 0, 16);
+            camera.lookAt(0, 0, 0);
+
+            const renderer = new THREE.WebGLRenderer({
+              alpha: true,
+              antialias: true,
+              powerPreference: "high-performance",
+            });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+
+            // Soft Studio Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+            scene.add(ambientLight);
+
+            const keyLight = new THREE.DirectionalLight(0xfff8ee, 1.2);
+            keyLight.position.set(10, 14, 12);
+            scene.add(keyLight);
+
+            const tealRimLight = new THREE.DirectionalLight(0x57cc99, 1.6);
+            tealRimLight.position.set(-12, -8, -6);
+            scene.add(tealRimLight);
+
+            const warmFill = new THREE.PointLight(0xdda15e, 0.8, 25);
+            warmFill.position.set(0, -6, 6);
+            scene.add(warmFill);
+
+            const rootGroup = new THREE.Group();
+            scene.add(rootGroup);
+
+            // Color constants
+            const cTeal = new THREE.Color(0x38a3a5);
+            const cEmerald = new THREE.Color(0x57cc99);
+            const cMint = new THREE.Color(0x80ed99);
+            const cMintSoft = new THREE.Color(0xc7f9cc);
+
+            // Particle Sprite Texture for Mist & Dissolve Sparkles
+            function createParticleTexture() {
+              const canvas = document.createElement("canvas");
+              canvas.width = 64;
+              canvas.height = 64;
+              const ctx = canvas.getContext("2d");
+              const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+              grad.addColorStop(0, "rgba(255, 255, 255, 1)");
+              grad.addColorStop(0.25, "rgba(128, 237, 153, 0.85)");
+              grad.addColorStop(0.6, "rgba(56, 163, 165, 0.3)");
+              grad.addColorStop(1, "rgba(56, 163, 165, 0)");
+              ctx.fillStyle = grad;
+              ctx.beginPath();
+              ctx.arc(32, 32, 32, 0, Math.PI * 2);
+              ctx.fill();
+              return new THREE.CanvasTexture(canvas);
+            }
+            const particleTex = createParticleTexture();
+
+            // -------------------------------------------------------------
+            // 1. PROCEDURAL PIXAR-STYLE CHARACTERS & CREATURES
+            // -------------------------------------------------------------
+
+            // A. DERATIZARE: Stylized Mouse (Curious, clean, soft grey-brown fur, pink ears & tail)
+            function createMouse() {
+              const mouse = new THREE.Group();
+
+              // Body (chubby, friendly pear shape)
+              const bodyGeo = new THREE.SphereGeometry(0.75, 24, 20);
+              bodyGeo.scale(1.2, 0.85, 0.85);
+              const furMat = new THREE.MeshStandardMaterial({
+                color: 0x8c7a6b,
+                roughness: 0.8,
+                metalness: 0.05,
+              });
+              const body = new THREE.Mesh(bodyGeo, furMat);
+              mouse.add(body);
+
+              // Head
+              const headGeo = new THREE.ConeGeometry(0.55, 0.95, 20);
+              headGeo.rotateZ(-Math.PI / 2);
+              headGeo.scale(0.85, 1, 0.85);
+              const head = new THREE.Mesh(headGeo, furMat);
+              head.position.set(0.85, 0.1, 0);
+              mouse.add(head);
+
+              // Snout / Pink Nose
+              const noseGeo = new THREE.SphereGeometry(0.1, 16, 16);
+              const pinkMat = new THREE.MeshStandardMaterial({
+                color: 0xf4a5ae,
+                roughness: 0.4,
+              });
+              const nose = new THREE.Mesh(noseGeo, pinkMat);
+              nose.position.set(1.42, 0.1, 0);
+              mouse.add(nose);
+
+              // Cute Dark Glossy Eyes
+              const eyeGeo = new THREE.SphereGeometry(0.09, 16, 16);
+              const eyeMat = new THREE.MeshStandardMaterial({
+                color: 0x101518,
+                roughness: 0.1,
+                metalness: 0.8,
+              });
+              const eyeL = new THREE.Mesh(eyeGeo, eyeMat);
+              eyeL.position.set(1.05, 0.35, 0.28);
+              const eyeR = new THREE.Mesh(eyeGeo, eyeMat);
+              eyeR.position.set(1.05, 0.35, -0.28);
+              mouse.add(eyeL);
+              mouse.add(eyeR);
+
+              // Friendly Big Ears
+              const earOuterGeo = new THREE.CylinderGeometry(
+                0.32,
+                0.32,
+                0.05,
+                20,
+              );
+              const earInnerGeo = new THREE.CylinderGeometry(
+                0.24,
+                0.24,
+                0.06,
+                20,
+              );
+              earOuterGeo.rotateX(Math.PI / 2);
+              earInnerGeo.rotateX(Math.PI / 2);
+
+              const earL = new THREE.Group();
+              earL.position.set(0.65, 0.62, 0.38);
+              earL.rotation.y = 0.25;
+              earL.rotation.z = -0.2;
+              earL.add(new THREE.Mesh(earOuterGeo, furMat));
+              earL.add(new THREE.Mesh(earInnerGeo, pinkMat));
+              mouse.add(earL);
+
+              const earR = new THREE.Group();
+              earR.position.set(0.65, 0.62, -0.38);
+              earR.rotation.y = -0.25;
+              earR.rotation.z = -0.2;
+              earR.add(new THREE.Mesh(earOuterGeo, furMat));
+              earR.add(new THREE.Mesh(earInnerGeo, pinkMat));
+              mouse.add(earR);
+
+              // Cute Curling Tail
+              const tailCurve = new THREE.CatmullRomCurve3([
+                new THREE.Vector3(-0.9, -0.1, 0),
+                new THREE.Vector3(-1.4, 0.2, 0.15),
+                new THREE.Vector3(-1.8, 0.45, -0.1),
+                new THREE.Vector3(-2.2, 0.7, 0.1),
+              ]);
+              const tailGeo = new THREE.TubeGeometry(
+                tailCurve,
+                20,
+                0.045,
+                10,
+                false,
+              );
+              const tailMesh = new THREE.Mesh(tailGeo, pinkMat);
+              mouse.add(tailMesh);
+
+              // Little Paws
+              const pawGeo = new THREE.SphereGeometry(0.12, 12, 12);
+              pawGeo.scale(1.4, 0.7, 1);
+              const paws = [];
+              const pawPositions = [
+                [0.6, -0.4, 0.4],
+                [0.6, -0.4, -0.4],
+                [-0.4, -0.4, 0.45],
+                [-0.4, -0.4, -0.45],
+              ];
+              pawPositions.forEach((pos) => {
+                const p = new THREE.Mesh(pawGeo, pinkMat);
+                p.position.set(pos[0], pos[1], pos[2]);
+                mouse.add(p);
+                paws.push(p);
+              });
+
+              return {
+                group: mouse,
+                head: head,
+                tail: tailMesh,
+                paws: paws,
+                mats: [furMat, pinkMat, eyeMat],
+              };
+            }
+
+            // B. DEZINSECȚIE: Stylized Cockroach (Glossy dark amber rounded shell, legs)
+            function createCockroach() {
+              const roach = new THREE.Group();
+              const shellMat = new THREE.MeshStandardMaterial({
+                color: 0x4d2a18,
+                roughness: 0.15,
+                metalness: 0.35,
+              });
+              const legMat = new THREE.MeshStandardMaterial({
+                color: 0x2a150a,
+                roughness: 0.4,
+              });
+
+              // Elytra / Shell
+              const shellGeo = new THREE.SphereGeometry(0.55, 20, 16);
+              shellGeo.scale(0.8, 1.4, 0.35);
+              const shell = new THREE.Mesh(shellGeo, shellMat);
+              roach.add(shell);
+
+              // Pronotum / Head shield
+              const pronGeo = new THREE.SphereGeometry(0.35, 16, 14);
+              pronGeo.scale(0.75, 0.7, 0.3);
+              const pron = new THREE.Mesh(pronGeo, shellMat);
+              pron.position.set(0, 0.85, 0.05);
+              roach.add(pron);
+
+              // Long curved antennae
+              [-1, 1].forEach((side) => {
+                const antCurve = new THREE.CatmullRomCurve3([
+                  new THREE.Vector3(side * 0.1, 1.05, 0.05),
+                  new THREE.Vector3(side * 0.4, 1.5, 0.1),
+                  new THREE.Vector3(side * 0.65, 1.9, -0.05),
+                ]);
+                const ant = new THREE.Mesh(
+                  new THREE.TubeGeometry(antCurve, 14, 0.015, 6, false),
+                  legMat,
+                );
+                roach.add(ant);
+              });
+
+              // 6 Jointed legs
+              const legs = [];
+              [-1, 1].forEach((side) => {
+                [-0.35, 0.1, 0.5].forEach((yOffset, i) => {
+                  const legGroup = new THREE.Group();
+                  legGroup.position.set(side * 0.35, yOffset, -0.05);
+
+                  const legCurve = new THREE.CatmullRomCurve3([
+                    new THREE.Vector3(0, 0, 0),
+                    new THREE.Vector3(side * 0.45, 0.15, -0.08),
+                    new THREE.Vector3(side * 0.75, -0.2, -0.15),
+                  ]);
+                  const legMesh = new THREE.Mesh(
+                    new THREE.TubeGeometry(legCurve, 12, 0.025, 6, false),
+                    legMat,
+                  );
+                  legGroup.add(legMesh);
+                  roach.add(legGroup);
+                  legs.push({
+                    group: legGroup,
+                    side: side,
+                    baseRot: 0,
+                    index: i,
+                  });
+                });
+              });
+
+              return { group: roach, legs: legs, mats: [shellMat, legMat] };
+            }
+
+            // C. DEZINSECȚIE: Stylized Mosquito (Slim striped body, translucent wings, proboscis)
+            function createMosquito() {
+              const mosq = new THREE.Group();
+              const bodyMat = new THREE.MeshStandardMaterial({
+                color: 0x333f48,
+                roughness: 0.5,
+              });
+              const wingMat = new THREE.MeshStandardMaterial({
+                color: 0xc7f9cc,
+                transparent: true,
+                opacity: 0.65,
+                roughness: 0.1,
+                metalness: 0.4,
+              });
+
+              // Abdomen
+              const abdGeo = new THREE.CylinderGeometry(0.12, 0.04, 0.9, 12);
+              abdGeo.rotateX(Math.PI / 2);
+              const abd = new THREE.Mesh(abdGeo, bodyMat);
+              abd.position.set(0, -0.35, -0.15);
+              mosq.add(abd);
+
+              // Thorax & Head
+              const thoraxGeo = new THREE.SphereGeometry(0.22, 14, 14);
+              const thorax = new THREE.Mesh(thoraxGeo, bodyMat);
+              mosq.add(thorax);
+
+              const headGeo = new THREE.SphereGeometry(0.14, 14, 14);
+              const head = new THREE.Mesh(headGeo, bodyMat);
+              head.position.set(0, 0.28, 0.05);
+              mosq.add(head);
+
+              // Proboscis Needle
+              const needleGeo = new THREE.CylinderGeometry(0.015, 0.01, 0.5, 8);
+              needleGeo.rotateX(Math.PI / 3);
+              const needle = new THREE.Mesh(needleGeo, bodyMat);
+              needle.position.set(0, 0.48, 0.15);
+              mosq.add(needle);
+
+              // 2 Translucent delicate wings
+              const wingGeo = new THREE.PlaneGeometry(0.4, 1.1);
+              wingGeo.translate(0, 0.5, 0);
+
+              const wingL = new THREE.Mesh(wingGeo, wingMat);
+              wingL.position.set(-0.12, 0.1, 0.15);
+              wingL.rotation.z = -Math.PI / 3;
+              wingL.rotation.y = -0.3;
+              mosq.add(wingL);
+
+              const wingR = new THREE.Mesh(wingGeo, wingMat);
+              wingR.position.set(0.12, 0.1, 0.15);
+              wingR.rotation.z = Math.PI / 3;
+              wingR.rotation.y = 0.3;
+              mosq.add(wingR);
+
+              // Long thin hanging legs
+              [-1, 1].forEach((side) => {
+                [-0.1, 0.1].forEach((offset) => {
+                  const lCurve = new THREE.CatmullRomCurve3([
+                    new THREE.Vector3(side * 0.15, offset, 0),
+                    new THREE.Vector3(side * 0.5, offset - 0.3, -0.4),
+                    new THREE.Vector3(side * 0.7, offset - 0.7, -0.6),
+                  ]);
+                  const leg = new THREE.Mesh(
+                    new THREE.TubeGeometry(lCurve, 10, 0.015, 6, false),
+                    bodyMat,
+                  );
+                  mosq.add(leg);
+                });
+              });
+
+              return {
+                group: mosq,
+                wingL: wingL,
+                wingR: wingR,
+                mats: [bodyMat, wingMat],
+              };
+            }
+
+            // D. DEZINFECȚIE: Jelly-like translucent Microbes / Viruses (Wobbly, glowing, spikes)
+            function createMicrobes() {
+              const microbes = [];
+              const configs = [
+                {
+                  x: -6.5,
+                  y: 3.2,
+                  z: 0,
+                  scale: 0.65,
+                  color: 0x57cc99,
+                  speed: 1.2,
+                },
+                {
+                  x: -5.8,
+                  y: 2.1,
+                  z: 0.8,
+                  scale: 0.45,
+                  color: 0x80ed99,
+                  speed: 1.6,
+                },
+                {
+                  x: 6.4,
+                  y: -2.8,
+                  z: 0.2,
+                  scale: 0.58,
+                  color: 0x38a3a5,
+                  speed: 1.4,
+                },
+                {
+                  x: 5.6,
+                  y: -3.8,
+                  z: -0.5,
+                  scale: 0.42,
+                  color: 0x57cc99,
+                  speed: 1.8,
+                },
+              ];
+
+              configs.forEach((cfg, i) => {
+                const g = new THREE.Group();
+                g.position.set(cfg.x, cfg.y, cfg.z);
+
+                const baseGeo = new THREE.IcosahedronGeometry(cfg.scale, 2);
+                const mat = new THREE.MeshStandardMaterial({
+                  color: cfg.color,
+                  emissive: cfg.color,
+                  emissiveIntensity: 0.5,
+                  roughness: 0.2,
+                  transparent: true,
+                  opacity: 0.82,
+                });
+                const core = new THREE.Mesh(baseGeo, mat);
+                g.add(core);
+
+                // Club spikes / protein caps
+                const spikeGeo = new THREE.CylinderGeometry(
+                  0.03,
+                  0.06,
+                  cfg.scale * 0.6,
+                  8,
+                );
+                const capGeo = new THREE.SphereGeometry(
+                  cfg.scale * 0.16,
+                  12,
+                  12,
+                );
+                spikeGeo.translate(0, cfg.scale * 0.8, 0);
+                capGeo.translate(0, cfg.scale * 1.1, 0);
+
+                const spikeMat = new THREE.MeshStandardMaterial({
+                  color: 0xc7f9cc,
+                  roughness: 0.3,
+                });
+
+                const spikeGroup = new THREE.Group();
+                for (let s = 0; s < 10; s++) {
+                  const sg = new THREE.Group();
+                  sg.rotation.x = Math.random() * Math.PI * 2;
+                  sg.rotation.y = Math.random() * Math.PI * 2;
+                  sg.add(new THREE.Mesh(spikeGeo, spikeMat));
+                  sg.add(new THREE.Mesh(capGeo, spikeMat));
+                  spikeGroup.add(sg);
+                }
+                g.add(spikeGroup);
+
+                rootGroup.add(g);
+                microbes.push({
+                  group: g,
+                  core: core,
+                  baseScale: cfg.scale,
+                  cfg: cfg,
+                  mats: [mat, spikeMat],
+                  alive: true,
+                });
+              });
+
+              return microbes;
+            }
+
+            // Instantiate Characters
+            const mouseObj = createMouse();
+            const roachObj = createCockroach();
+            const mosqObj = createMosquito();
+            const microbesList = createMicrobes();
+
+            rootGroup.add(mouseObj.group);
+            rootGroup.add(roachObj.group);
+            rootGroup.add(mosqObj.group);
+
+            // Initial base scales
+            mouseObj.group.scale.set(0.85, 0.85, 0.85);
+            roachObj.group.scale.set(0.9, 0.9, 0.9);
+            mosqObj.group.scale.set(0.95, 0.95, 0.95);
+
+            // -------------------------------------------------------------
+            // 2. MIST SPRAY SYSTEM & DISSOLVE SPARKLES
+            // -------------------------------------------------------------
+
+            // A. Automatic Sweeping Mist Wave (Left to Right)
+            const waveParticleCount = 280;
+            const waveGeo = new THREE.BufferGeometry();
+            const wavePositions = new Float32Array(waveParticleCount * 3);
+            const waveColors = new Float32Array(waveParticleCount * 3);
+            const waveLifes = new Float32Array(waveParticleCount);
+
+            for (let i = 0; i < waveParticleCount; i++) {
+              wavePositions[i * 3] = -20;
+              wavePositions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+              wavePositions[i * 3 + 2] = (Math.random() - 0.5) * 4;
+              waveLifes[i] = Math.random();
+
+              const col = Math.random() > 0.5 ? cMint : cTeal;
+              waveColors[i * 3] = col.r;
+              waveColors[i * 3 + 1] = col.g;
+              waveColors[i * 3 + 2] = col.b;
+            }
+            waveGeo.setAttribute(
+              "position",
+              new THREE.BufferAttribute(wavePositions, 3),
+            );
+            waveGeo.setAttribute(
+              "color",
+              new THREE.BufferAttribute(waveColors, 3),
+            );
+
+            const waveMat = new THREE.PointsMaterial({
+              size: 0.85,
+              vertexColors: true,
+              map: particleTex,
+              transparent: true,
+              opacity: 0.75,
+              blending: THREE.NormalBlending,
+              depthWrite: false,
+            });
+            const sweepMistMesh = new THREE.Points(waveGeo, waveMat);
+            rootGroup.add(sweepMistMesh);
+
+            // B. Interactive Cursor Nozzle Mist Trail
+            const cursorPCount = 90;
+            const cursorGeo = new THREE.BufferGeometry();
+            const cursorPositions = new Float32Array(cursorPCount * 3);
+            const cursorLifes = new Float32Array(cursorPCount);
+            const cursorVels = new Float32Array(cursorPCount * 3);
+
+            for (let i = 0; i < cursorPCount; i++) {
+              cursorPositions[i * 3] = 0;
+              cursorPositions[i * 3 + 1] = -100;
+              cursorPositions[i * 3 + 2] = 0;
+              cursorLifes[i] = 1.0;
+            }
+            cursorGeo.setAttribute(
+              "position",
+              new THREE.BufferAttribute(cursorPositions, 3),
+            );
+
+            const cursorMat = new THREE.PointsMaterial({
+              size: 0.65,
+              color: 0x80ed99,
+              map: particleTex,
+              transparent: true,
+              opacity: 0.8,
+              blending: THREE.AdditiveBlending,
+              depthWrite: false,
+            });
+            const cursorMistMesh = new THREE.Points(cursorGeo, cursorMat);
+            rootGroup.add(cursorMistMesh);
+
+            // C. Dissolve Sparkles Pool (Mint & Emerald)
+            const sparkCount = 180;
+            const sparkGeo = new THREE.BufferGeometry();
+            const sparkPositions = new Float32Array(sparkCount * 3);
+            const sparkVels = new Float32Array(sparkCount * 3);
+            const sparkLifes = new Float32Array(sparkCount);
+
+            for (let i = 0; i < sparkCount; i++) {
+              sparkPositions[i * 3] = 0;
+              sparkPositions[i * 3 + 1] = -100;
+              sparkPositions[i * 3 + 2] = 0;
+              sparkLifes[i] = 1.0;
+            }
+            sparkGeo.setAttribute(
+              "position",
+              new THREE.BufferAttribute(sparkPositions, 3),
+            );
+
+            const sparkMat = new THREE.PointsMaterial({
+              size: 0.42,
+              color: 0x57cc99,
+              map: particleTex,
+              transparent: true,
+              opacity: 0.9,
+              blending: THREE.AdditiveBlending,
+              depthWrite: false,
+            });
+            const sparklesMesh = new THREE.Points(sparkGeo, sparkMat);
+            rootGroup.add(sparklesMesh);
+
+            function spawnDissolveSparkles(x, y, z, count = 25) {
+              const pos = sparkGeo.attributes.position.array;
+              let spawned = 0;
+              for (let i = 0; i < sparkCount && spawned < count; i++) {
+                if (sparkLifes[i] >= 1.0) {
+                  sparkLifes[i] = 0.0;
+                  pos[i * 3] = x + (Math.random() - 0.5) * 0.4;
+                  pos[i * 3 + 1] = y + (Math.random() - 0.5) * 0.4;
+                  pos[i * 3 + 2] = z + (Math.random() - 0.5) * 0.4;
+                  sparkVels[i * 3] = (Math.random() - 0.5) * 0.06;
+                  sparkVels[i * 3 + 1] = 0.04 + Math.random() * 0.08; // upward drift
+                  sparkVels[i * 3 + 2] = (Math.random() - 0.5) * 0.04;
+                  spawned++;
+                }
+              }
+              sparkGeo.attributes.position.needsUpdate = true;
+            }
+
+            // D. "Clean Moment" Soft Light Beam / Lens Sweep
+            const cleanBeamGeo = new THREE.PlaneGeometry(28, 16);
+            const cleanBeamMat = new THREE.MeshBasicMaterial({
+              color: 0xc7f9cc,
+              transparent: true,
+              opacity: 0.0,
+              side: THREE.DoubleSide,
+              blending: THREE.AdditiveBlending,
+            });
+            const cleanBeamMesh = new THREE.Mesh(cleanBeamGeo, cleanBeamMat);
+            cleanBeamMesh.position.z = 2;
+            rootGroup.add(cleanBeamMesh);
+
+            // -------------------------------------------------------------
+            // 3. MOUSE INTERACTION (CURSOR IS SPRAY NOZZLE)
+            // -------------------------------------------------------------
+            let mouseWorld = new THREE.Vector3(0, 0, 0);
+            let mouseScreenX = 0;
+            let mouseScreenY = 0;
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            let isMoving = false;
+            let moveTimeout;
+
+            function onMouseMove(e) {
+              const rect = container.getBoundingClientRect();
+              mouseScreenX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+              mouseScreenY = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+              // Project to z=0 in 3D world
+              mouseWorld.set(mouseScreenX * 8.5, mouseScreenY * 5.2, 0);
+
+              const distMoved = Math.hypot(
+                e.clientX - lastMouseX,
+                e.clientY - lastMouseY,
+              );
+              lastMouseX = e.clientX;
+              lastMouseY = e.clientY;
+
+              if (distMoved > 2) {
+                isMoving = true;
+                clearTimeout(moveTimeout);
+                moveTimeout = setTimeout(() => {
+                  isMoving = false;
+                }, 120);
+
+                // Emit cursor nozzle spray mist
+                emitCursorSpray(mouseWorld.x, mouseWorld.y, mouseWorld.z);
+              }
+            }
+
+            function emitCursorSpray(x, y, z) {
+              const pos = cursorGeo.attributes.position.array;
+              for (let i = 0; i < 3; i++) {
+                const idx = Math.floor(Math.random() * cursorPCount);
+                cursorLifes[idx] = 0;
+                pos[idx * 3] = x + (Math.random() - 0.5) * 0.2;
+                pos[idx * 3 + 1] = y + (Math.random() - 0.5) * 0.2;
+                pos[idx * 3 + 2] = z + 0.3;
+                cursorVels[idx * 3] = (Math.random() - 0.5) * 0.05;
+                cursorVels[idx * 3 + 1] = -0.02 - Math.random() * 0.04;
+                cursorVels[idx * 3 + 2] = (Math.random() - 0.5) * 0.03;
+              }
+              cursorGeo.attributes.position.needsUpdate = true;
+            }
+
+            function onPointerDown(e) {
+              onMouseMove(e);
+              // Burst spray on tap/click
+              for (let k = 0; k < 15; k++) {
+                emitCursorSpray(mouseWorld.x, mouseWorld.y, mouseWorld.z);
+              }
+              spawnDissolveSparkles(
+                mouseWorld.x,
+                mouseWorld.y,
+                mouseWorld.z,
+                15,
+              );
+            }
+
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("pointerdown", onPointerDown);
+
+            // -------------------------------------------------------------
+            // 4. ANIMATION TIMELINE LOOP (~12 SECONDS)
+            // -------------------------------------------------------------
+            const clock = new THREE.Clock();
+            const LOOP_DURATION = 12.0;
+
+            // Track pest dissolution states for clean dissolve effect
+            const pestStates = {
+              mouse: { dissolved: false, scale: 0.85 },
+              roach: { dissolved: false, scale: 0.9 },
+              mosq: { dissolved: false, scale: 0.95 },
+            };
+
+            function animate() {
+              requestAnimationFrame(animate);
+              const time = clock.getElapsedTime();
+              const cycleTime = time % LOOP_DURATION; // 0 to 12.0s
+
+              // Phase 1: 0.0s – 5.5s (Pests appear & wander around perimeter)
+              // Phase 2: 5.5s – 8.8s (Teal-mint spray mist sweeps left to right, pests dissolve)
+              // Phase 3: 8.8s – 10.5s (Clean moment: soft light sweep, scene pristine & serene)
+              // Phase 4: 10.5s – 12.0s (Pests slowly emerge for next loop)
+
+              // Sweep Mist Wave position X: sweeps from -14 to +14 between t=5.2s and t=8.8s
+              let sweepActive = false;
+              let sweepFrontX = -20;
+              if (cycleTime >= 5.0 && cycleTime <= 8.8) {
+                sweepActive = true;
+                const progress = (cycleTime - 5.0) / 3.8;
+                sweepFrontX = -12 + progress * 24; // left edge to right edge
+              } else {
+                sweepFrontX = -20;
+              }
+
+              // Reset loop states when cycle resets
+              if (cycleTime < 0.2) {
+                pestStates.mouse.dissolved = false;
+                pestStates.roach.dissolved = false;
+                pestStates.mosq.dissolved = false;
+                microbesList.forEach((m) => (m.alive = true));
+              }
+
+              // -----------------------------------------------------------
+              // A. MOUSE ANIMATION (Deratizare: scurries bottom edge, sniffs, flees)
+              // -----------------------------------------------------------
+              let mouseTargetX = -6.5;
+              let mouseTargetY = -4.2;
+              let mouseHeadRot = 0;
+
+              if (cycleTime < 2.5) {
+                // Enters from bottom left, scurries along bottom
+                const tNorm = cycleTime / 2.5;
+                mouseTargetX = -9.0 + tNorm * 3.5; // stops around -5.5
+                mouseObj.group.rotation.y = 0; // facing right (+X)
+                // Rapid trot bobbing
+                mouseTargetY = -4.2 + Math.abs(Math.sin(time * 16)) * 0.12;
+                mouseObj.tail.rotation.z = Math.sin(time * 14) * 0.3;
+              } else if (cycleTime < 5.4) {
+                // Stops and curious sniffing
+                mouseTargetX = -5.5;
+                mouseTargetY = -4.2;
+                mouseHeadRot = Math.sin(time * 10) * 0.15;
+                mouseObj.head.rotation.y = mouseHeadRot;
+                mouseObj.tail.rotation.y = Math.sin(time * 6) * 0.4;
+              } else if (cycleTime < 7.0) {
+                // Sprayed! Scurries fast to escape rightwards or dissolves
+                mouseTargetX = -5.5 + (cycleTime - 5.4) * 5.0;
+                mouseTargetY = -4.2 + Math.abs(Math.sin(time * 24)) * 0.18;
+              }
+
+              // Check hit by Sweep Mist Wave or Cursor Nozzle
+              const mouseHitBySweep =
+                sweepActive && sweepFrontX >= mouseTargetX;
+              const mouseDistToCursor = mouseWorld.distanceTo(
+                mouseObj.group.position,
+              );
+              const mouseHitByCursor = mouseDistToCursor < 2.0 && isMoving;
+
+              if (
+                (mouseHitBySweep || mouseHitByCursor) &&
+                !pestStates.mouse.dissolved
+              ) {
+                pestStates.mouse.dissolved = true;
+                spawnDissolveSparkles(
+                  mouseObj.group.position.x,
+                  mouseObj.group.position.y,
+                  mouseObj.group.position.z,
+                  28,
+                );
+              }
+
+              // Mouse Dissolve & Reappear logic
+              if (pestStates.mouse.dissolved) {
+                pestStates.mouse.scale = Math.max(
+                  0.001,
+                  pestStates.mouse.scale - 0.05,
+                );
+              } else if (cycleTime >= 10.5) {
+                // Re-emerging for next loop
+                pestStates.mouse.scale = Math.min(
+                  0.85,
+                  ((cycleTime - 10.5) / 1.5) * 0.85,
+                );
+              } else {
+                pestStates.mouse.scale = 0.85;
+              }
+              mouseObj.group.scale.set(
+                pestStates.mouse.scale,
+                pestStates.mouse.scale,
+                pestStates.mouse.scale,
+              );
+              mouseObj.group.position.set(mouseTargetX, mouseTargetY, 0.4);
+
+              // -----------------------------------------------------------
+              // B. COCKROACH ANIMATION (Dezinsecție: crawls up the right edge)
+              // -----------------------------------------------------------
+              let roachX = 6.6;
+              let roachY = -3.8;
+
+              if (cycleTime < 6.8) {
+                // Crawling upward along right edge
+                const roachProgress = cycleTime / 6.8;
+                roachY = -3.8 + roachProgress * 4.8; // moves up from -3.8 to +1.0
+                roachObj.group.rotation.z =
+                  Math.PI / 2 + Math.sin(time * 12) * 0.08; // facing up (+Y)
+
+                // Leg scuttle animation
+                roachObj.legs.forEach((l) => {
+                  l.group.rotation.z =
+                    Math.sin(time * 18 + l.index * 1.5) * 0.4 * l.side;
+                });
+              }
+
+              // Check hit by Sweep Mist Wave or Cursor
+              const roachHitBySweep =
+                sweepActive && sweepFrontX >= roachX - 0.6;
+              const roachDistToCursor = mouseWorld.distanceTo(
+                roachObj.group.position,
+              );
+              const roachHitByCursor = roachDistToCursor < 1.8 && isMoving;
+
+              if (
+                (roachHitBySweep || roachHitByCursor) &&
+                !pestStates.roach.dissolved
+              ) {
+                pestStates.roach.dissolved = true;
+                spawnDissolveSparkles(
+                  roachObj.group.position.x,
+                  roachObj.group.position.y,
+                  roachObj.group.position.z,
+                  26,
+                );
+              }
+
+              if (pestStates.roach.dissolved) {
+                pestStates.roach.scale = Math.max(
+                  0.001,
+                  pestStates.roach.scale - 0.06,
+                );
+              } else if (cycleTime >= 10.8) {
+                pestStates.roach.scale = Math.min(
+                  0.9,
+                  ((cycleTime - 10.8) / 1.2) * 0.9,
+                );
+              } else {
+                pestStates.roach.scale = 0.9;
+              }
+              roachObj.group.scale.set(
+                pestStates.roach.scale,
+                pestStates.roach.scale,
+                pestStates.roach.scale,
+              );
+              roachObj.group.position.set(roachX, roachY, 0.3);
+
+              // -----------------------------------------------------------
+              // C. MOSQUITO ANIMATION (Dezinsecție: flies wobbly path near top)
+              // -----------------------------------------------------------
+              let mosqX = -3.5 + Math.sin(time * 1.8) * 3.2;
+              let mosqY = 3.8 + Math.cos(time * 2.6) * 0.5;
+
+              // Rapid Wing Flap
+              mosqObj.wingL.rotation.x = Math.sin(time * 48) * 0.65;
+              mosqObj.wingR.rotation.x = -Math.sin(time * 48) * 0.65;
+              mosqObj.group.rotation.z = Math.sin(time * 1.8) * 0.3;
+
+              const mosqHitBySweep = sweepActive && sweepFrontX >= mosqX;
+              const mosqDistToCursor = mouseWorld.distanceTo(
+                mosqObj.group.position,
+              );
+              const mosqHitByCursor = mosqDistToCursor < 1.6 && isMoving;
+
+              if (
+                (mosqHitBySweep || mosqHitByCursor) &&
+                !pestStates.mosq.dissolved
+              ) {
+                pestStates.mosq.dissolved = true;
+                spawnDissolveSparkles(
+                  mosqObj.group.position.x,
+                  mosqObj.group.position.y,
+                  mosqObj.group.position.z,
+                  24,
+                );
+              }
+
+              if (pestStates.mosq.dissolved) {
+                pestStates.mosq.scale = Math.max(
+                  0.001,
+                  pestStates.mosq.scale - 0.07,
+                );
+              } else if (cycleTime >= 10.6) {
+                pestStates.mosq.scale = Math.min(
+                  0.95,
+                  ((cycleTime - 10.6) / 1.4) * 0.95,
+                );
+              } else {
+                pestStates.mosq.scale = 0.95;
+              }
+              mosqObj.group.scale.set(
+                pestStates.mosq.scale,
+                pestStates.mosq.scale,
+                pestStates.mosq.scale,
+              );
+              mosqObj.group.position.set(mosqX, mosqY, 0.5);
+
+              // -----------------------------------------------------------
+              // D. MICROBES & VIRUSES (Dezinfecție: wobble & shrink/pop on mist)
+              // -----------------------------------------------------------
+              microbesList.forEach((m, idx) => {
+                // Organic wobble
+                m.group.rotation.x = time * 0.8 + idx;
+                m.group.rotation.y = time * 0.6 + idx;
+                const wobble = 1.0 + Math.sin(time * 3.5 + idx * 2) * 0.08;
+
+                const hitBySweep = sweepActive && sweepFrontX >= m.cfg.x;
+                const distToCursor = mouseWorld.distanceTo(m.group.position);
+                const hitByCursor = distToCursor < 1.8 && isMoving;
+
+                if ((hitBySweep || hitByCursor) && m.alive) {
+                  m.alive = false;
+                  spawnDissolveSparkles(
+                    m.group.position.x,
+                    m.group.position.y,
+                    m.group.position.z,
+                    18,
+                  );
+                }
+
+                if (!m.alive) {
+                  m.baseScale = Math.max(0.001, m.baseScale - 0.04);
+                } else if (cycleTime >= 10.2) {
+                  m.baseScale = Math.min(
+                    m.cfg.scale,
+                    ((cycleTime - 10.2) / 1.8) * m.cfg.scale,
+                  );
+                } else {
+                  m.baseScale = m.cfg.scale;
+                }
+
+                const currentScale = m.baseScale * wobble;
+                m.group.scale.set(currentScale, currentScale, currentScale);
+              });
+
+              // -----------------------------------------------------------
+              // E. SWEEP MIST PARTICLES UPDATE
+              // -----------------------------------------------------------
+              const wavePos = waveGeo.attributes.position.array;
+              for (let i = 0; i < waveParticleCount; i++) {
+                if (sweepActive) {
+                  // Emit fan along sweep front
+                  waveLifes[i] += 0.012;
+                  if (waveLifes[i] > 1.0) waveLifes[i] = 0;
+
+                  const pX =
+                    sweepFrontX -
+                    waveLifes[i] * 2.8 +
+                    Math.sin(i * 3 + time * 3) * 0.5;
+                  const pY =
+                    (i / waveParticleCount - 0.5) * 11 +
+                    Math.sin(time * 4 + i) * 0.8;
+                  const pZ = Math.cos(i * 2 + time * 2) * 1.8;
+
+                  wavePos[i * 3] = pX;
+                  wavePos[i * 3 + 1] = pY;
+                  wavePos[i * 3 + 2] = pZ;
+                } else {
+                  wavePos[i * 3 + 1] = -100; // hide off-screen
+                }
+              }
+              waveGeo.attributes.position.needsUpdate = true;
+
+              // -----------------------------------------------------------
+              // F. CURSOR MIST TRAIL UPDATE
+              // -----------------------------------------------------------
+              const cPos = cursorGeo.attributes.position.array;
+              for (let i = 0; i < cursorPCount; i++) {
+                if (cursorLifes[i] < 1.0) {
+                  cursorLifes[i] += 0.025;
+                  cPos[i * 3] += cursorVels[i * 3];
+                  cPos[i * 3 + 1] += cursorVels[i * 3 + 1];
+                  cPos[i * 3 + 2] += cursorVels[i * 3 + 2];
+                } else {
+                  cPos[i * 3 + 1] = -100;
+                }
+              }
+              cursorGeo.attributes.position.needsUpdate = true;
+
+              // -----------------------------------------------------------
+              // G. DISSOLVE SPARKLES UPDATE
+              // -----------------------------------------------------------
+              const sPos = sparkGeo.attributes.position.array;
+              for (let i = 0; i < sparkCount; i++) {
+                if (sparkLifes[i] < 1.0) {
+                  sparkLifes[i] += 0.018;
+                  sPos[i * 3] += sparkVels[i * 3];
+                  sPos[i * 3 + 1] += sparkVels[i * 3 + 1];
+                  sPos[i * 3 + 2] += sparkVels[i * 3 + 2];
+                } else {
+                  sPos[i * 3 + 1] = -100;
+                }
+              }
+              sparkGeo.attributes.position.needsUpdate = true;
+
+              // -----------------------------------------------------------
+              // H. PHASE 3: CLEAN MOMENT (Soft mint radiance sweep, 8.8s – 10.4s)
+              // -----------------------------------------------------------
+              if (cycleTime >= 8.6 && cycleTime <= 10.4) {
+                const cleanProgress = (cycleTime - 8.6) / 1.8;
+                // Soft sinusoidal light bloom
+                cleanBeamMat.opacity = Math.sin(cleanProgress * Math.PI) * 0.18;
+                cleanBeamMesh.position.x = -6 + cleanProgress * 12;
+              } else {
+                cleanBeamMat.opacity = 0.0;
+              }
+
+              // Responsive parallax tilt
+              rootGroup.rotation.y = THREE.MathUtils.lerp(
+                rootGroup.rotation.y,
+                mouseScreenX * 0.12,
+                0.05,
+              );
+              rootGroup.rotation.x = THREE.MathUtils.lerp(
+                rootGroup.rotation.x,
+                -mouseScreenY * 0.08,
+                0.05,
+              );
+
+              renderer.render(scene, camera);
+            }
+            animate();
+
+            function handleResize() {
+              const w = container.clientWidth || window.innerWidth;
+              const h = container.clientHeight || window.innerHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+            }
+            window.addEventListener("resize", handleResize);
+          })();
+        })();
+      </script>
+    </div>
+    <!-- STITCH_THREEJS_END:ANIMATION_28 -->
+  </body>
+</html>
