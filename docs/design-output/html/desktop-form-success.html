@@ -1,0 +1,1621 @@
+<!doctype html>
+
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#c1c7ce",
+              ink: "#102A36",
+              background: "#F7FAF9",
+              "inverse-surface": "#1a3340",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "secondary-container": "#8ff3f4",
+              outline: "#72787e",
+              "surface-container": "#dbf1ff",
+              "surface-container-low": "#e8f6ff",
+              "accent-strong": "#BC6C25",
+              "primary-strong": "#1A4560",
+              "mint-haze": "#F0FBF3",
+              "on-secondary-container": "#007072",
+              "on-tertiary-container": "#68dca7",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "on-background": "#031e2a",
+              "on-surface-variant": "#41474e",
+              "tertiary-fixed": "#85f8c2",
+              error: "#DC2626",
+              "on-error-container": "#93000a",
+              mint: "#80ED99",
+              "on-surface": "#031e2a",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#c4deee",
+              "surface-inverse": "#102A36",
+              "on-primary": "#ffffff",
+              secondary: "#00696b",
+              "surface-tint": "#306386",
+              "on-primary-fixed-variant": "#114b6d",
+              "primary-container": "#22577a",
+              "on-secondary-fixed-variant": "#004f51",
+              "primary-fixed-dim": "#9bccf4",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#cbe6ff",
+              tertiary: "#00452d",
+              "secondary-fixed-dim": "#72d6d8",
+              surface: "#FFFFFF",
+              "tertiary-fixed-dim": "#67dca7",
+              accent: "#DDA15E",
+              "surface-bright": "#f4faff",
+              line: "#D5E3E6",
+              "surface-container-highest": "#cce6f6",
+              "inverse-on-surface": "#e2f3ff",
+              primary: "#003f60",
+              success: "#047857",
+              "tertiary-container": "#005f40",
+              "surface-container-high": "#d2ecfc",
+              "surface-variant": "#cce6f6",
+              "ink-muted": "#4B6470",
+              "on-primary-container": "#9cccf4",
+              "on-tertiary-fixed": "#002114",
+              "mint-soft": "#C7F9CC",
+              "secondary-fixed": "#8ff3f4",
+              "inverse-primary": "#9bccf4",
+              "on-primary-fixed": "#001e30",
+              "on-secondary-fixed": "#002020",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              lg: "24px",
+              "3xl": "64px",
+              xl: "32px",
+              gutter: "1.5rem",
+              sm: "8px",
+              "space-xl": "2rem",
+              "space-lg": "1.5rem",
+              "margin-mobile": "1rem",
+              "5xl": "128px",
+              "space-sm": "0.5rem",
+              margin: "2rem",
+              "4xl": "96px",
+              "2xl": "48px",
+              "space-xs": "0.25rem",
+              xs: "4px",
+              md: "16px",
+              "space-md": "1rem",
+              "gutter-mobile": "1rem",
+            },
+            fontFamily: {
+              label: ["Inter"],
+              h2: ["Plus Jakarta Sans"],
+              "body-md": ["Inter"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "h2-mobile": ["Plus Jakarta Sans"],
+              "display-mobile": ["Plus Jakarta Sans"],
+              numeral: ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              eyebrow: ["Inter"],
+              button: ["Inter"],
+              display: ["Plus Jakarta Sans"],
+              "headline-lg-mobile": ["Plus Jakarta Sans"],
+              "body-lg": ["Inter"],
+              h3: ["Plus Jakarta Sans"],
+              "body-sm": ["Inter"],
+              stat: ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              label: ["14px", { lineHeight: "1.4", fontWeight: "600" }],
+              h2: [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.025em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": [
+                "24px",
+                {
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "h2-mobile": [
+                "34px",
+                {
+                  lineHeight: "1.15",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "display-mobile": [
+                "44px",
+                {
+                  lineHeight: "1.08",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "800",
+                },
+              ],
+              numeral: [
+                "96px",
+                {
+                  lineHeight: "1",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "800",
+                },
+              ],
+              "headline-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.025em",
+                  fontWeight: "700",
+                },
+              ],
+              eyebrow: [
+                "13px",
+                { lineHeight: "1", letterSpacing: "0.12em", fontWeight: "600" },
+              ],
+              button: ["16px", { lineHeight: "1", fontWeight: "600" }],
+              display: [
+                "72px",
+                {
+                  lineHeight: "1.04",
+                  letterSpacing: "-0.035em",
+                  fontWeight: "800",
+                },
+              ],
+              "headline-lg-mobile": [
+                "34px",
+                {
+                  lineHeight: "1.15",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["20px", { lineHeight: "1.6", fontWeight: "400" }],
+              h3: [
+                "24px",
+                {
+                  lineHeight: "1.3",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              stat: [
+                "48px",
+                {
+                  lineHeight: "1",
+                  letterSpacing: "-0.03em",
+                  fontWeight: "800",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background font-body-md text-on-surface antialiased selection:bg-mint-soft selection:text-ink"
+  >
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-white/75 backdrop-blur-md border-b border-line"
+    >
+      <div
+        class="h-[72px] max-w-[1440px] mx-auto px-6 lg:px-12 flex items-center justify-between"
+      >
+        <a class="flex items-center gap-2.5" data-path="landing-page" href="#"
+          ><div
+            class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary"
+          >
+            <span class="material-symbols-outlined text-[20px]">verified</span>
+          </div>
+          <div
+            class="flex items-center text-[22px] font-extrabold tracking-tight font-headline-md leading-none"
+          >
+            <span class="text-ink">Derat</span
+            ><span class="text-primary-container">Pro</span>
+          </div></a
+        >
+        <nav
+          class="hidden md:flex items-center gap-8"
+          data-active-classes="text-ink font-semibold"
+        >
+          <a
+            class="text-[15px] font-medium font-body-md text-ink-muted hover:text-ink transition-colors"
+            data-path="servicii"
+            href="#"
+            >Servicii</a
+          ><a
+            class="text-[15px] font-medium font-body-md text-ink-muted hover:text-ink transition-colors"
+            data-path="de-ce-noi"
+            href="#"
+            >De ce noi</a
+          ><a
+            class="text-[15px] font-medium font-body-md text-ink-muted hover:text-ink transition-colors"
+            data-path="cum-functioneaza"
+            href="#"
+            >Cum funcționează</a
+          ><a
+            class="text-[15px] font-medium font-body-md text-ink-muted hover:text-ink transition-colors"
+            data-path="contact"
+            href="#"
+            >Contact</a
+          >
+        </nav>
+        <div class="flex items-center gap-4 lg:gap-6">
+          <div
+            class="h-8 p-0.5 bg-line/60 rounded-full flex items-center text-xs font-semibold select-none"
+          >
+            <span
+              class="h-7 px-2.5 rounded-full bg-surface text-ink flex items-center shadow-[0_1px_3px_rgba(16,42,54,0.1)]"
+              >RO</span
+            ><span
+              class="h-7 px-2.5 rounded-full text-ink-muted flex items-center cursor-pointer hover:text-ink"
+              >EN</span
+            >
+          </div>
+          <a
+            class="hidden lg:flex items-center gap-1.5 text-primary-container font-semibold font-button text-sm hover:text-primary-strong transition-colors"
+            href="tel:0722000000"
+            ><span class="material-symbols-outlined text-[18px]">call</span
+            ><span>0722 000 000</span></a
+          ><a
+            class="h-11 px-5 rounded-[12px] bg-primary-container hover:bg-primary-strong text-on-primary font-button text-sm inline-flex items-center justify-center transition-all active:scale-[0.98]"
+            data-path="solicita-oferta"
+            href="#"
+            >Cere ofertă</a
+          >
+          <div
+            class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"
+          >
+            <span class="material-symbols-outlined text-on-primary text-[18px]"
+              >person</span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-[72px] bg-background min-h-screen">
+      <div class="flex flex-col w-full">
+        <!-- ========================================================================= -->
+        <!-- 2. HERO SECTION (#F7FAF9, min-h-[760px], centered, particle ambiance)     -->
+        <!-- ========================================================================= -->
+        <section
+          class="relative w-full min-h-[760px] bg-background flex flex-col items-center justify-center overflow-hidden pb-20 pt-10"
+        >
+          <!-- Background visual: Glowing dots, translucent orbs, mint radial glow -->
+          <div
+            class="absolute inset-0 pointer-events-none overflow-hidden select-none"
+          >
+            <!-- Radial mint glow directly behind text canvas -->
+            <div
+              class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[720px] h-[520px] bg-mint-soft/35 rounded-full blur-[110px]"
+            ></div>
+            <div
+              class="absolute right-[8%] top-[12%] w-[380px] h-[380px] bg-secondary-fixed/20 rounded-full blur-[90px]"
+            ></div>
+            <div
+              class="absolute left-[5%] bottom-[15%] w-[420px] h-[420px] bg-mint/15 rounded-full blur-[100px]"
+            ></div>
+            <!-- Layered abstract particle SVG field -->
+            <svg
+              class="absolute inset-0 w-full h-full opacity-70"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                <radialgradient cx="50%" cy="50%" id="particleMask" r="45%">
+                  <stop offset="0%" stop-color="black" stop-opacity="0"></stop>
+                  <stop
+                    offset="60%"
+                    stop-color="black"
+                    stop-opacity="0.4"
+                  ></stop>
+                  <stop
+                    offset="100%"
+                    stop-color="black"
+                    stop-opacity="1"
+                  ></stop>
+                </radialgradient>
+                <mask id="fadeCenter">
+                  <rect
+                    fill="url(#particleMask)"
+                    height="100%"
+                    width="100%"
+                  ></rect>
+                </mask>
+              </defs>
+              <g mask="url(#fadeCenter)">
+                <!-- Glowing dots in #38A3A5 (secondary), #57CC99, #80ED99 (mint) -->
+                <circle
+                  class="animate-pulse"
+                  cx="12%"
+                  cy="22%"
+                  fill="#38A3A5"
+                  r="4.5"
+                  style="animation-duration: 4s"
+                ></circle>
+                <circle cx="18%" cy="38%" fill="#80ED99" r="3"></circle>
+                <circle
+                  cx="8%"
+                  cy="65%"
+                  fill="#57CC99"
+                  opacity="0.6"
+                  r="6"
+                ></circle>
+                <circle
+                  cx="22%"
+                  cy="80%"
+                  fill="#38A3A5"
+                  opacity="0.7"
+                  r="3.5"
+                ></circle>
+                <circle
+                  class="animate-pulse"
+                  cx="86%"
+                  cy="18%"
+                  fill="#57CC99"
+                  r="5"
+                  style="animation-duration: 3.5s"
+                ></circle>
+                <circle cx="92%" cy="45%" fill="#38A3A5" r="3"></circle>
+                <circle
+                  cx="80%"
+                  cy="70%"
+                  fill="#80ED99"
+                  opacity="0.5"
+                  r="6.5"
+                ></circle>
+                <circle
+                  cx="88%"
+                  cy="84%"
+                  fill="#38A3A5"
+                  opacity="0.8"
+                  r="4"
+                ></circle>
+                <!-- Delicate orbital path lines for clinical sanitary precision feel -->
+                <circle
+                  cx="15%"
+                  cy="30%"
+                  fill="none"
+                  opacity="0.4"
+                  r="64"
+                  stroke="#D5E3E6"
+                  stroke-dasharray="4 6"
+                  stroke-width="1"
+                ></circle>
+                <circle
+                  cx="85%"
+                  cy="65%"
+                  fill="none"
+                  opacity="0.4"
+                  r="96"
+                  stroke="#D5E3E6"
+                  stroke-dasharray="3 7"
+                  stroke-width="1"
+                ></circle>
+              </g>
+            </svg>
+          </div>
+          <!-- Centered hero body (max 880px) -->
+          <div
+            class="relative z-10 w-full max-w-[880px] mx-auto px-6 flex flex-col items-center text-center"
+          >
+            <!-- Eyebrow Pill -->
+            <div
+              class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mint-haze shadow-sm"
+            >
+              <span
+                class="w-1.5 h-1.5 rounded-full bg-[#57CC99] inline-block"
+              ></span>
+              <span
+                class="font-eyebrow text-eyebrow text-primary-container uppercase tracking-wider"
+              >
+                Deratizare · Dezinsecție · Dezinfecție
+              </span>
+            </div>
+            <!-- Headline (Plus Jakarta Sans 72px ExtraBold, #102A36, letter-spacing -0.035em) -->
+            <h1
+              class="mt-8 font-display text-display text-ink font-extrabold max-w-[860px]"
+            >
+              Casa sau afacerea ta, fără dăunători.
+              <span class="relative inline-block whitespace-nowrap">
+                Garantat.
+                <!-- Expressive hand-drawn caramel brush-stroke underline svg -->
+                <svg
+                  class="absolute -bottom-2.5 left-0 w-full overflow-visible pointer-events-none"
+                  fill="none"
+                  height="14"
+                  viewbox="0 0 280 14"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 9.5C64.2 4.1 168.4 2.8 276 7.2M18 12C95.5 8.2 192.3 8 262 11"
+                    stroke="#DDA15E"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="4.5"
+                  ></path>
+                </svg>
+              </span>
+            </h1>
+            <!-- Subline (Inter 20px, #4B6470, max 640px) -->
+            <p
+              class="mt-8 font-body-lg text-body-lg text-ink-muted max-w-[640px]"
+            >
+              Intervenții profesionale pentru case, birouri și spații
+              comerciale, cu substanțe avizate și garanție scrisă.
+            </p>
+            <!-- Two 56px buttons, 16px apart -->
+            <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <!-- Primary -->
+              <a
+                class="h-14 px-8 rounded-[12px] bg-primary-container hover:bg-primary-strong text-on-primary font-button text-button inline-flex items-center justify-center gap-2.5 transition-all shadow-[0_10px_25px_-5px_rgba(34,87,122,0.3)] active:scale-[0.98]"
+                href="#cere-oferta"
+              >
+                <span>Cere ofertă gratuită</span>
+                <span class="material-symbols-outlined text-[20px]"
+                  >arrow_forward</span
+                >
+              </a>
+              <!-- Secondary -->
+              <a
+                class="h-14 px-8 rounded-[12px] bg-transparent hover:bg-mint-haze text-primary-container font-button text-button inline-flex items-center justify-center gap-2.5 shadow-sm transition-all active:scale-[0.98] outline outline-[1.5px] outline-primary-container -outline-offset-1"
+                href="tel:0722000000"
+              >
+                <span class="material-symbols-outlined text-[20px]">call</span>
+                <span>Sună acum</span>
+              </a>
+            </div>
+            <!-- Trust line -->
+            <div
+              class="mt-10 flex flex-wrap items-center justify-center gap-2 text-ink-muted font-body-sm text-body-sm"
+            >
+              <div class="flex items-center gap-0.5 text-accent">
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+              </div>
+              <span class="font-medium text-ink">4.9/5 din 300+ recenzii</span>
+              <span class="text-outline-variant px-1.5">·</span>
+              <div class="flex items-center gap-1 text-secondary">
+                <span
+                  class="material-symbols-outlined text-[18px]"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >verified_user</span
+                >
+                <span class="font-medium text-ink">Operator DDD autorizat</span>
+              </div>
+            </div>
+            <!-- Bottom center Discover scroll hint -->
+            <div
+              class="mt-16 flex flex-col items-center gap-1.5 text-secondary opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+            >
+              <span
+                class="font-body-sm text-[13px] tracking-wide text-ink-muted"
+                >Descoperă serviciile</span
+              >
+              <span
+                class="material-symbols-outlined text-[22px] animate-bounce text-[#38A3A5]"
+                >keyboard_arrow_down</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- 3. STATS CARD (Overlaps bottom edge of hero by 64px, 1200px max width)    -->
+        <!-- ========================================================================= -->
+        <section
+          class="relative z-20 w-full max-w-[1200px] mx-auto px-6 -mt-16 mb-24"
+        >
+          <!-- Main Card -->
+          <div
+            class="w-full bg-surface rounded-[24px] shadow-[0_20px_50px_-15px_rgba(16,42,54,0.08)] p-8 lg:p-10"
+          >
+            <div
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-line"
+            >
+              <!-- Col 1 -->
+              <div
+                class="flex flex-col items-center text-center py-4 lg:py-2 px-4"
+              >
+                <div
+                  class="font-stat text-stat text-primary-container flex items-baseline"
+                >
+                  <span>10</span>
+                  <span
+                    class="text-accent-strong text-[36px] font-extrabold ml-0.5"
+                    >+</span
+                  >
+                </div>
+                <span class="mt-2 font-body-sm text-body-sm text-ink-muted"
+                  >ani de experiență</span
+                >
+              </div>
+              <!-- Col 2 -->
+              <div
+                class="flex flex-col items-center text-center py-4 lg:py-2 px-4"
+              >
+                <div
+                  class="font-stat text-stat text-primary-container flex items-baseline"
+                >
+                  <span>2.500</span>
+                  <span
+                    class="text-accent-strong text-[36px] font-extrabold ml-0.5"
+                    >+</span
+                  >
+                </div>
+                <span class="mt-2 font-body-sm text-body-sm text-ink-muted"
+                  >intervenții realizate</span
+                >
+              </div>
+              <!-- Col 3 -->
+              <div
+                class="flex flex-col items-center text-center py-4 lg:py-2 px-4"
+              >
+                <div
+                  class="font-stat text-stat text-primary-container flex items-baseline"
+                >
+                  <span>24</span>
+                  <span
+                    class="text-accent-strong text-[36px] font-extrabold ml-0.5"
+                    >h</span
+                  >
+                </div>
+                <span class="mt-2 font-body-sm text-body-sm text-ink-muted"
+                  >timp de răspuns</span
+                >
+              </div>
+              <!-- Col 4 -->
+              <div
+                class="flex flex-col items-center text-center py-4 lg:py-2 px-4"
+              >
+                <div class="font-stat text-stat text-primary-container">
+                  <span>6 luni</span>
+                </div>
+                <span class="mt-2 font-body-sm text-body-sm text-ink-muted"
+                  >garanție scrisă</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- 24px under card: Certification badges -->
+          <div
+            class="mt-6 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4"
+          >
+            <span
+              class="font-eyebrow text-eyebrow text-ink-muted uppercase tracking-widest text-[13px]"
+            >
+              Certificări și avize
+            </span>
+            <div class="flex flex-wrap items-center justify-center gap-2.5">
+              <span
+                class="h-8 px-3.5 rounded-full bg-surface shadow-sm inline-flex items-center gap-1.5 text-ink-muted font-body-sm text-body-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-secondary"
+                  >verified</span
+                >
+                <span>Avizat DSP</span>
+              </span>
+              <span
+                class="h-8 px-3.5 rounded-full bg-surface shadow-sm inline-flex items-center gap-1.5 text-ink-muted font-body-sm text-body-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-secondary"
+                  >verified</span
+                >
+                <span>Biocide avizate MS</span>
+              </span>
+              <span
+                class="h-8 px-3.5 rounded-full bg-surface shadow-sm inline-flex items-center gap-1.5 text-ink-muted font-body-sm text-body-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-secondary"
+                  >verified</span
+                >
+                <span>ISO 9001</span>
+              </span>
+              <span
+                class="h-8 px-3.5 rounded-full bg-surface shadow-sm inline-flex items-center gap-1.5 text-ink-muted font-body-sm text-body-sm"
+              >
+                <span
+                  class="material-symbols-outlined text-[16px] text-secondary"
+                  >verified</span
+                >
+                <span>HACCP</span>
+              </span>
+            </div>
+          </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- 4. SERVICII SECTION (Background #FFFFFF, 128px vertical padding)          -->
+        <!-- ========================================================================= -->
+        <section class="w-full bg-surface py-[128px]" id="servicii">
+          <div class="w-full max-w-[1200px] mx-auto px-6">
+            <!-- Split header -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
+              <div class="lg:col-span-7 flex flex-col gap-3">
+                <div
+                  class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-haze w-fit shadow-xs"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#57CC99]"></span>
+                  <span
+                    class="font-eyebrow text-eyebrow text-primary-container uppercase"
+                    >Servicii</span
+                  >
+                </div>
+                <h2
+                  class="font-headline-lg text-headline-lg text-ink font-bold leading-tight"
+                >
+                  Tot ce ai nevoie pentru un spațiu curat și sigur
+                </h2>
+              </div>
+              <div class="lg:col-span-5 pb-1">
+                <p
+                  class="font-body-md text-[18px] leading-relaxed text-ink-muted"
+                >
+                  Tratamente profesionale, adaptate fiecărui spațiu — de la
+                  apartamente la depozite și restaurante.
+                </p>
+              </div>
+            </div>
+            <!-- Three equal cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Card 1: Deratizare -->
+              <div
+                class="bg-surface rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(16,42,54,0.06)] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div>
+                  <div
+                    class="w-14 h-14 rounded-[16px] bg-mint-soft flex items-center justify-center text-primary-container mb-6 shadow-inner"
+                  >
+                    <span class="material-symbols-outlined text-[30px]"
+                      >pest_control_rodent</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                  >
+                    Deratizare
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-ink-muted mb-6 leading-relaxed"
+                  >
+                    Eliminăm șoarecii și șobolanii din casă, depozit sau
+                    restaurant, cu soluții sigure și discrete.
+                  </p>
+                  <ul class="space-y-3 mb-8">
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Stații de momire securizate</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Monitorizare periodică</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Sigur pentru copii și animale</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  class="inline-flex items-center gap-2 font-button text-button text-primary-container hover:text-primary-strong transition-colors pt-2 group"
+                  href="#cere-oferta"
+                >
+                  <span>Solicită ofertă</span>
+                  <span class="transition-transform group-hover:translate-x-1"
+                    >→</span
+                  >
+                </a>
+              </div>
+              <!-- Card 2: Dezinsecție (Hovered/Emphasized presentation) -->
+              <div
+                class="bg-surface rounded-[24px] p-8 shadow-xl -translate-y-1 transition-all duration-300 flex flex-col justify-between relative ring-2 ring-[#38A3A5]/40"
+              >
+                <div>
+                  <div
+                    class="w-14 h-14 rounded-[16px] bg-mint-soft flex items-center justify-center text-primary-container mb-6 shadow-inner"
+                  >
+                    <span class="material-symbols-outlined text-[30px]"
+                      >bug_report</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                  >
+                    Dezinsecție
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-ink-muted mb-6 leading-relaxed"
+                  >
+                    Tratamente eficiente împotriva insectelor târâtoare și
+                    zburătoare, în interior și exterior.
+                  </p>
+                  <ul class="space-y-3 mb-8">
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Gândaci, ploșnițe, furnici</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Țânțari, muște, viespi</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Fără miros persistent</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  class="inline-flex items-center gap-2 font-button text-button text-primary-container hover:text-primary-strong transition-colors pt-2 group"
+                  href="#cere-oferta"
+                >
+                  <span>Solicită ofertă</span>
+                  <span class="transition-transform group-hover:translate-x-1"
+                    >→</span
+                  >
+                </a>
+              </div>
+              <!-- Card 3: Dezinfecție -->
+              <div
+                class="bg-surface rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(16,42,54,0.06)] flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div>
+                  <div
+                    class="w-14 h-14 rounded-[16px] bg-mint-soft flex items-center justify-center text-primary-container mb-6 shadow-inner"
+                  >
+                    <span class="material-symbols-outlined text-[30px]"
+                      >clean_hands</span
+                    >
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                  >
+                    Dezinfecție
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-ink-muted mb-6 leading-relaxed"
+                  >
+                    Dezinfecție profesională prin nebulizare, pentru spații
+                    curate și sigure din punct de vedere sanitar.
+                  </p>
+                  <ul class="space-y-3 mb-8">
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Elimină viruși, bacterii și fungi</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Ideal pentru HoReCa și clinici</span>
+                    </li>
+                    <li
+                      class="flex items-center gap-2.5 font-body-sm text-body-sm text-ink"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[#57CC99] text-[20px]"
+                        >check_circle</span
+                      >
+                      <span>Produse avizate Ministerul Sănătății</span>
+                    </li>
+                  </ul>
+                </div>
+                <a
+                  class="inline-flex items-center gap-2 font-button text-button text-primary-container hover:text-primary-strong transition-colors pt-2 group"
+                  href="#cere-oferta"
+                >
+                  <span>Solicită ofertă</span>
+                  <span class="transition-transform group-hover:translate-x-1"
+                    >→</span
+                  >
+                </a>
+              </div>
+            </div>
+            <!-- Under cards, centered: Lucrăm pentru -->
+            <div
+              class="mt-16 flex flex-col md:flex-row items-center justify-center gap-4 text-center"
+            >
+              <span class="font-body-sm text-body-sm text-ink-muted font-medium"
+                >Lucrăm pentru:</span
+              >
+              <div class="flex flex-wrap items-center justify-center gap-3">
+                <div
+                  class="h-10 px-4 rounded-full bg-surface shadow-xs inline-flex items-center gap-2 text-ink font-body-sm text-body-sm"
+                >
+                  <span
+                    class="material-symbols-outlined text-[#38A3A5] text-[18px]"
+                    >home</span
+                  >
+                  <span>Case &amp; apartamente</span>
+                </div>
+                <div
+                  class="h-10 px-4 rounded-full bg-surface shadow-xs inline-flex items-center gap-2 text-ink font-body-sm text-body-sm"
+                >
+                  <span
+                    class="material-symbols-outlined text-[#38A3A5] text-[18px]"
+                    >corporate_fare</span
+                  >
+                  <span>Birouri</span>
+                </div>
+                <div
+                  class="h-10 px-4 rounded-full bg-surface shadow-xs inline-flex items-center gap-2 text-ink font-body-sm text-body-sm"
+                >
+                  <span
+                    class="material-symbols-outlined text-[#38A3A5] text-[18px]"
+                    >restaurant</span
+                  >
+                  <span>HoReCa</span>
+                </div>
+                <div
+                  class="h-10 px-4 rounded-full bg-surface shadow-xs inline-flex items-center gap-2 text-ink font-body-sm text-body-sm"
+                >
+                  <span
+                    class="material-symbols-outlined text-[#38A3A5] text-[18px]"
+                    >warehouse</span
+                  >
+                  <span>Depozite &amp; industrie</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- 5. DE CE DERATPRO (Background #F7FAF9, 128px vertical padding, Bento)     -->
+        <!-- ========================================================================= -->
+        <section class="w-full bg-background py-[128px]" id="de-ce-noi">
+          <div class="w-full max-w-[1200px] mx-auto px-6">
+            <!-- Centered header -->
+            <div
+              class="flex flex-col items-center text-center max-w-[760px] mx-auto mb-16"
+            >
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-haze mb-3 shadow-xs"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-[#57CC99]"></span>
+                <span
+                  class="font-eyebrow text-eyebrow text-primary-container uppercase"
+                  >De ce noi</span
+                >
+              </div>
+              <h2
+                class="font-headline-lg text-headline-lg text-ink font-bold mb-4"
+              >
+                De ce aleg clienții DeratPro
+              </h2>
+              <p class="font-body-md text-[18px] text-ink-muted">
+                Lucrăm curat, rapid și documentat — iar rezultatul este garantat
+                în scris.
+              </p>
+            </div>
+            <!-- Bento Grid (5 cols vs 7 cols) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <!-- Left Feature Card: Garanție (spans full height / 5 cols) -->
+              <div
+                class="lg:col-span-5 bg-primary-container text-on-primary rounded-[24px] p-10 flex flex-col justify-between relative overflow-hidden shadow-xl min-h-[520px]"
+              >
+                <!-- Faint Hexagon Pattern Background -->
+                <div
+                  class="absolute inset-0 opacity-10 pointer-events-none"
+                  style="
+                    background-image: radial-gradient(
+                      circle at 2px 2px,
+                      white 1px,
+                      transparent 0
+                    );
+                    background-size: 24px 24px;
+                  "
+                ></div>
+                <!-- Mint Radial Glow in top-right corner -->
+                <div
+                  class="absolute -top-16 -right-16 w-56 h-56 bg-mint rounded-full blur-[80px] opacity-35 pointer-events-none"
+                ></div>
+                <!-- Top: Icon tile -->
+                <div class="relative z-10">
+                  <div
+                    class="w-14 h-14 rounded-[16px] bg-white/12 backdrop-blur-sm flex items-center justify-center text-mint-soft"
+                  >
+                    <span class="material-symbols-outlined text-[32px]"
+                      >verified_user</span
+                    >
+                  </div>
+                </div>
+                <!-- Middle: Huge 6 luni + Title & Description -->
+                <div class="relative z-10 my-8">
+                  <div
+                    class="font-numeral text-[88px] font-extrabold tracking-tight leading-none text-white mb-3"
+                  >
+                    6 luni
+                  </div>
+                  <h3
+                    class="font-headline-md text-headline-md font-bold text-white mb-3"
+                  >
+                    Garanție scrisă
+                  </h3>
+                  <p
+                    class="font-body-md text-body-md text-white/80 leading-relaxed"
+                  >
+                    Dacă dăunătorii revin în perioada de garanție, revenim și
+                    refacem tratamentul fără niciun cost. Plus reinspecție
+                    gratuită în 14 zile.
+                  </p>
+                </div>
+                <!-- Bottom: Small pill -->
+                <div class="relative z-10">
+                  <span
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/12 text-white text-xs font-semibold tracking-wide uppercase font-label"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[15px] text-mint"
+                      >verified</span
+                    >
+                    Inclus în fiecare intervenție
+                  </span>
+                </div>
+              </div>
+              <!-- Right Side: Top wide card + Two bottom cards (7 cols) -->
+              <div class="lg:col-span-7 flex flex-col gap-6">
+                <!-- Right Top Card: Intervenție rapidă -->
+                <div
+                  class="bg-surface rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(16,42,54,0.06)] relative overflow-hidden flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between"
+                >
+                  <div class="flex items-start gap-5">
+                    <div
+                      class="w-14 h-14 rounded-[16px] bg-mint-haze flex items-center justify-center text-primary-container shrink-0 shadow-inner"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[30px] text-primary-container"
+                        >bolt</span
+                      >
+                    </div>
+                    <div>
+                      <h3
+                        class="font-headline-md text-headline-md text-ink font-bold mb-2"
+                      >
+                        Intervenție rapidă
+                      </h3>
+                      <p
+                        class="font-body-md text-body-md text-ink-muted leading-relaxed"
+                      >
+                        Ajungem la tine în maximum 24 de ore, iar pentru urgențe
+                        chiar în aceeași zi — inclusiv în weekend.
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Small pill top-right -->
+                  <div class="sm:absolute sm:top-6 sm:right-6 shrink-0">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mint-haze text-ink text-xs font-semibold"
+                    >
+                      <span
+                        class="w-1.5 h-1.5 rounded-full bg-[#57CC99]"
+                      ></span>
+                      Urgențe 24/7
+                    </span>
+                  </div>
+                </div>
+                <!-- Right Bottom Cards: Card A & Card B -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+                  <!-- Card A: Substanțe avizate -->
+                  <div
+                    class="bg-surface rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(16,42,54,0.06)] flex flex-col"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-[14px] bg-mint-haze flex items-center justify-center text-primary-container mb-5 shadow-inner"
+                    >
+                      <span class="material-symbols-outlined text-[26px]"
+                        >science</span
+                      >
+                    </div>
+                    <h4 class="font-h3 text-[20px] font-bold text-ink mb-2">
+                      Substanțe avizate
+                    </h4>
+                    <p
+                      class="font-body-md text-body-md text-ink-muted leading-relaxed"
+                    >
+                      Folosim doar biocide avizate, sigure pentru familie și
+                      animalele de companie.
+                    </p>
+                  </div>
+                  <!-- Card B: Personal autorizat -->
+                  <div
+                    class="bg-surface rounded-[24px] p-8 shadow-[0_10px_30px_-10px_rgba(16,42,54,0.06)] flex flex-col"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-[14px] bg-mint-haze flex items-center justify-center text-primary-container mb-5 shadow-inner"
+                    >
+                      <span class="material-symbols-outlined text-[26px]"
+                        >badge</span
+                      >
+                    </div>
+                    <h4 class="font-h3 text-[20px] font-bold text-ink mb-2">
+                      Personal autorizat
+                    </h4>
+                    <p
+                      class="font-body-md text-body-md text-ink-muted leading-relaxed"
+                    >
+                      Tehnicieni instruiți și certificați pentru servicii DDD,
+                      cu echipament profesional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- 6. CUM FUNCȚIONEAZĂ (Background #FFFFFF, 128px vertical padding)          -->
+        <!-- ========================================================================= -->
+        <section class="w-full bg-surface py-[128px]" id="cum-functioneaza">
+          <div class="w-full max-w-[1200px] mx-auto px-6">
+            <!-- Centered Header -->
+            <div
+              class="flex flex-col items-center text-center max-w-[760px] mx-auto mb-20"
+            >
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-haze mb-3 shadow-xs"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-[#57CC99]"></span>
+                <span
+                  class="font-eyebrow text-eyebrow text-primary-container uppercase"
+                  >Proces</span
+                >
+              </div>
+              <h2
+                class="font-headline-lg text-headline-lg text-ink font-bold mb-4"
+              >
+                Simplu, în 3 pași
+              </h2>
+              <p class="font-body-md text-[18px] text-ink-muted">
+                De la primul telefon până la un spațiu fără dăunători, știi
+                mereu ce urmează.
+              </p>
+            </div>
+            <!-- Three Equal Columns connected with 2px dashed #38A3A5 line -->
+            <div
+              class="relative grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 mb-16"
+            >
+              <!-- Connecting dashed line running across nodes in desktop view -->
+              <div
+                class="hidden md:block absolute top-[138px] left-[16%] right-[16%] h-0.5 border-t-2 border-dashed border-[#38A3A5] z-0 pointer-events-none"
+              ></div>
+              <!-- Step 01 -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <!-- Outlined Numeral 01 -->
+                <div
+                  class="font-numeral text-numeral font-extrabold select-none mb-2"
+                  style="-webkit-text-stroke: 1.5px #38a3a5; color: transparent"
+                >
+                  01
+                </div>
+                <!-- Icon node sitting on line -->
+                <div
+                  class="w-14 h-14 rounded-full bg-surface shadow-md flex items-center justify-center text-primary-container mb-6 ring-2 ring-[#38A3A5]"
+                >
+                  <span class="material-symbols-outlined text-[26px]"
+                    >call</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                >
+                  Ne suni
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-ink-muted max-w-[300px]"
+                >
+                  Ne suni sau completezi formularul. Un specialist te
+                  contactează în cel mai scurt timp.
+                </p>
+              </div>
+              <!-- Step 02 -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <!-- Outlined Numeral 02 -->
+                <div
+                  class="font-numeral text-numeral font-extrabold select-none mb-2"
+                  style="-webkit-text-stroke: 1.5px #38a3a5; color: transparent"
+                >
+                  02
+                </div>
+                <!-- Icon node sitting on line -->
+                <div
+                  class="w-14 h-14 rounded-full bg-surface shadow-md flex items-center justify-center text-primary-container mb-6 ring-2 ring-[#38A3A5]"
+                >
+                  <span class="material-symbols-outlined text-[26px]"
+                    >assignment_turned_in</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                >
+                  Evaluare
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-ink-muted max-w-[300px]"
+                >
+                  Venim la fața locului, identificăm problema și îți oferim o
+                  ofertă clară, fără costuri ascunse.
+                </p>
+              </div>
+              <!-- Step 03 -->
+              <div class="relative z-10 flex flex-col items-center text-center">
+                <!-- Outlined Numeral 03 -->
+                <div
+                  class="font-numeral text-numeral font-extrabold select-none mb-2"
+                  style="-webkit-text-stroke: 1.5px #38a3a5; color: transparent"
+                >
+                  03
+                </div>
+                <!-- Icon node sitting on line -->
+                <div
+                  class="w-14 h-14 rounded-full bg-surface shadow-md flex items-center justify-center text-primary-container mb-6 ring-2 ring-[#38A3A5]"
+                >
+                  <span class="material-symbols-outlined text-[26px]"
+                    >auto_awesome</span
+                  >
+                </div>
+                <h3
+                  class="font-headline-md text-headline-md text-ink font-bold mb-3"
+                >
+                  Intervenție
+                </h3>
+                <p
+                  class="font-body-md text-body-md text-ink-muted max-w-[300px]"
+                >
+                  Aplicăm tratamentul potrivit și îți lăsăm recomandări,
+                  documentele necesare și garanția scrisă.
+                </p>
+              </div>
+            </div>
+            <!-- Under steps, centered: Mint pill -->
+            <div class="flex justify-center">
+              <div
+                class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-mint-haze text-ink font-body-sm text-body-sm shadow-xs"
+              >
+                <span
+                  class="material-symbols-outlined text-[18px] text-secondary"
+                  >schedule</span
+                >
+                <span class="font-medium"
+                  >Timp mediu de la apel la intervenție: sub 24 de ore</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- 7. CONTACT SECTION (Background #F7FAF9, 128px vertical padding)           -->
+        <!-- ========================================================================= -->
+        <section
+          class="relative w-full bg-background py-[128px] overflow-hidden"
+          id="cere-oferta"
+        >
+          <!-- Large soft radial mint glow (#C7F9CC) behind card -->
+          <div
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-mint-soft/40 rounded-full blur-[140px] pointer-events-none"
+          ></div>
+          <div class="relative z-10 w-full max-w-[1200px] mx-auto px-6">
+            <!-- Centered Header -->
+            <div
+              class="flex flex-col items-center text-center max-w-[760px] mx-auto mb-16"
+            >
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-haze mb-3 shadow-xs"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-[#57CC99]"></span>
+                <span
+                  class="font-eyebrow text-eyebrow text-primary-container uppercase"
+                  >Contact</span
+                >
+              </div>
+              <h2
+                class="font-headline-lg text-headline-lg text-ink font-bold mb-4"
+              >
+                Cere o ofertă gratuită
+              </h2>
+              <p class="font-body-md text-[18px] text-ink-muted">
+                Lasă-ne datele tale și te sunăm în cel mai scurt timp.
+              </p>
+            </div>
+            <!-- Main Contact Card (1200px, 32px radius, split 7:5) -->
+            <div
+              class="w-full bg-surface rounded-[32px] shadow-[0_25px_60px_-15px_rgba(16,42,54,0.12)] overflow-hidden grid grid-cols-1 lg:grid-cols-12"
+            >
+              <!-- Left: Success State Content (7 columns, centered vertically and horizontally) -->
+              <div
+                class="lg:col-span-7 p-8 md:p-12 flex flex-col items-center justify-center text-center min-h-[500px]"
+              >
+                <!-- 64px emerald circle (background: #57CC99) with white checkmark icon inside -->
+                <div
+                  class="w-16 h-16 rounded-full bg-[#57CC99] text-surface flex items-center justify-center shadow-md mb-6"
+                >
+                  <span
+                    class="material-symbols-outlined text-[34px] leading-none"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >check</span
+                  >
+                </div>
+                <!-- Heading: Mulțumim! (Plus Jakarta Sans, 24px bold, #102A36) -->
+                <h3
+                  class="font-headline-md text-headline-md text-ink font-bold mb-2"
+                >
+                  Mulțumim!
+                </h3>
+                <!-- Subtext: Am primit cererea ta. Te contactăm în cel mai scurt timp. (Inter 16px, #4B6470) -->
+                <p
+                  class="font-body-md text-body-md text-ink-muted max-w-md leading-relaxed mb-6"
+                >
+                  Am primit cererea ta. Te contactăm în cel mai scurt timp.
+                </p>
+                <!-- Outline button: Trimite o altă cerere -->
+                <button
+                  class="h-12 px-6 rounded-[12px] bg-transparent text-primary-container font-button text-button inline-flex items-center justify-center gap-2 hover:bg-mint-haze transition-all active:scale-[0.98] cursor-pointer"
+                  onclick="
+                    window.location.hash = '#cere-oferta';
+                    window.location.reload();
+                  "
+                  style="border: 1.5px solid #22577a"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]"
+                    >restart_alt</span
+                  >
+                  <span>Trimite o altă cerere</span>
+                </button>
+              </div>
+              <!-- Right: Info Panel (5 columns, 48px padding, #22577A) -->
+              <div
+                class="lg:col-span-5 bg-primary-container text-on-primary p-8 md:p-12 relative overflow-hidden flex flex-col justify-between"
+              >
+                <!-- Faint Hexagon pattern -->
+                <div
+                  class="absolute inset-0 opacity-10 pointer-events-none"
+                  style="
+                    background-image: radial-gradient(
+                      circle at 2px 2px,
+                      white 1px,
+                      transparent 0
+                    );
+                    background-size: 20px 20px;
+                  "
+                ></div>
+                <!-- Emerald glow in bottom-right corner -->
+                <div
+                  class="absolute -bottom-16 -right-16 w-60 h-60 bg-[#57CC99] rounded-full blur-[90px] opacity-30 pointer-events-none"
+                ></div>
+                <div class="relative z-10">
+                  <h3
+                    class="font-headline-md text-headline-md font-bold text-white mb-10"
+                  >
+                    Preferi să vorbim direct?
+                  </h3>
+                  <!-- 4 Rows with #C7F9CC line icons -->
+                  <div class="space-y-8">
+                    <!-- Row 1: Telefon -->
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-mint-soft shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-[22px]"
+                          >call</span
+                        >
+                      </div>
+                      <div>
+                        <span
+                          class="block text-white/70 font-eyebrow text-xs uppercase tracking-wider mb-1"
+                          >Telefon</span
+                        >
+                        <a
+                          class="text-[28px] font-extrabold font-h3 leading-none text-white hover:text-mint-soft transition-colors"
+                          href="tel:0722000000"
+                        >
+                          0722 000 000
+                        </a>
+                      </div>
+                    </div>
+                    <!-- Row 2: Email -->
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-mint-soft shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-[22px]"
+                          >mail</span
+                        >
+                      </div>
+                      <div>
+                        <span
+                          class="block text-white/70 font-eyebrow text-xs uppercase tracking-wider mb-1"
+                          >Email</span
+                        >
+                        <a
+                          class="font-body-md text-body-md font-medium text-white hover:text-mint-soft transition-colors"
+                          href="mailto:contact@deratpro.ro"
+                        >
+                          contact@deratpro.ro
+                        </a>
+                      </div>
+                    </div>
+                    <!-- Row 3: Program -->
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-mint-soft shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-[22px]"
+                          >schedule</span
+                        >
+                      </div>
+                      <div>
+                        <span
+                          class="block text-white/70 font-eyebrow text-xs uppercase tracking-wider mb-1"
+                          >Program</span
+                        >
+                        <p
+                          class="font-body-md text-body-md text-white font-medium"
+                        >
+                          L–V 08:00–20:00 · S 09:00–14:00
+                        </p>
+                        <span
+                          class="inline-block mt-1 font-body-sm text-xs font-semibold text-mint-soft uppercase tracking-wide"
+                        >
+                          Urgențe 24/7
+                        </span>
+                      </div>
+                    </div>
+                    <!-- Row 4: Zonă deservită -->
+                    <div class="flex items-start gap-4">
+                      <div
+                        class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center text-mint-soft shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-[22px]"
+                          >location_on</span
+                        >
+                      </div>
+                      <div>
+                        <span
+                          class="block text-white/70 font-eyebrow text-xs uppercase tracking-wider mb-1"
+                          >Zonă deservită</span
+                        >
+                        <p
+                          class="font-body-md text-body-md text-white font-medium"
+                        >
+                          București și Ilfov
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="relative z-10 pt-8 mt-8 border-t border-white/15 flex items-center justify-between text-xs text-white/75"
+                >
+                  <span>Răspuns garantat sub 15 minute</span>
+                  <span
+                    class="w-2 h-2 rounded-full bg-[#57CC99] animate-pulse"
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="w-full bg-surface-inverse text-surface pt-20 pb-8">
+      <div class="max-w-[1200px] mx-auto px-6">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-16"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center gap-2.5">
+              <div
+                class="w-8 h-8 rounded-lg bg-surface flex items-center justify-center text-surface-inverse"
+              >
+                <span class="material-symbols-outlined text-[20px]"
+                  >verified</span
+                >
+              </div>
+              <div
+                class="flex items-center text-[22px] font-extrabold tracking-tight font-headline-md leading-none"
+              >
+                <span class="text-surface">Derat</span
+                ><span class="text-secondary-fixed">Pro</span>
+              </div>
+            </div>
+            <p class="text-sm text-surface/70 leading-relaxed font-body-sm">
+              Servicii profesionale de deratizare, dezinsecție și dezinfecție.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span
+                class="px-2.5 py-1 rounded-full text-xs font-medium border border-surface/20 text-surface/80 bg-surface/5"
+                >Avizat DSP</span
+              ><span
+                class="px-2.5 py-1 rounded-full text-xs font-medium border border-surface/20 text-surface/80 bg-surface/5"
+                >ISO 9001</span
+              ><span
+                class="px-2.5 py-1 rounded-full text-xs font-medium border border-surface/20 text-surface/80 bg-surface/5"
+                >HACCP</span
+              >
+            </div>
+          </div>
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-semibold tracking-wider uppercase font-eyebrow text-surface/50"
+            >
+              Servicii
+            </h4>
+            <ul class="space-y-2.5 text-sm font-body-sm text-surface/75">
+              <li class="hover:text-surface transition-colors">
+                <a data-path="servicii" href="#">Deratizare</a>
+              </li>
+              <li class="hover:text-surface transition-colors">
+                <a data-path="servicii" href="#">Dezinsecție</a>
+              </li>
+              <li class="hover:text-surface transition-colors">
+                <a data-path="servicii" href="#">Dezinfecție</a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-semibold tracking-wider uppercase font-eyebrow text-surface/50"
+            >
+              Companie
+            </h4>
+            <ul class="space-y-2.5 text-sm font-body-sm text-surface/75">
+              <li class="hover:text-surface transition-colors">
+                <a data-path="de-ce-noi" href="#">De ce noi</a>
+              </li>
+              <li class="hover:text-surface transition-colors">
+                <a data-path="cum-functioneaza" href="#">Cum funcționează</a>
+              </li>
+              <li class="hover:text-surface transition-colors">
+                <a data-path="contact" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="space-y-3">
+            <h4
+              class="text-xs font-semibold tracking-wider uppercase font-eyebrow text-surface/50"
+            >
+              Contact
+            </h4>
+            <ul class="space-y-2.5 text-sm font-body-sm text-surface/75">
+              <li>
+                <a
+                  class="hover:text-surface transition-colors"
+                  href="tel:0722000000"
+                  >0722 000 000</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-surface transition-colors"
+                  href="mailto:contact@deratpro.ro"
+                  >contact@deratpro.ro</a
+                >
+              </li>
+              <li class="text-surface/70">București și Ilfov</li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-surface/12 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-surface/60 font-body-sm"
+        >
+          <span>© 2026 DeratPro. Proiect demonstrativ — firmă fictivă.</span
+          ><span>Operator DDD autorizat · Biocide avizate</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
