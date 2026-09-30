@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/sections/Hero";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Services } from "@/components/sections/Services";
 import { StatsCard } from "@/components/sections/StatsCard";
+import { WhyUs } from "@/components/sections/WhyUs";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
@@ -22,6 +25,9 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       <main id="main">
         <Hero copy={dict.hero} common={dict.common} />
         <StatsCard copy={dict.stats} />
+        <Services copy={dict.services} />
+        <WhyUs copy={dict.whyUs} />
+        <HowItWorks copy={dict.process} />
       </main>
     </>
   );
