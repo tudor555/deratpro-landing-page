@@ -17,7 +17,7 @@ export function Services({ copy }: { copy: Dictionary["services"] }) {
 
       <div className="grid gap-6 md:grid-cols-3">
         {copy.items.map((service, i) => (
-          <Card as="article" interactive key={service.title} className="group flex flex-col">
+          <Card as="article" interactive key={service.title} className="group flex flex-col md:p-6 lg:p-8">
             <IconTile icon={SERVICE_ICONS[i]} />
             <h3 className="mt-6 font-display text-h3 text-ink">{service.title}</h3>
             <p className="mt-3 text-ink-muted">{service.description}</p>
