@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import type { ReactNode } from "react";
 import { Container } from "./Container";
 
@@ -18,7 +18,7 @@ export function Section({ id, tone, className, children }: SectionProps) {
     <section
       id={id}
       aria-labelledby={sectionTitleId(id)}
-      className={clsx("relative py-18 lg:py-32", tone === "surface" ? "bg-surface" : "bg-background", className)}
+      className={cn("relative py-18 lg:py-32", tone === "surface" ? "bg-surface" : "bg-background", className)}
     >
       <Container className="relative">{children}</Container>
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/ui/Button";
@@ -61,7 +61,7 @@ export function Header({ lang, copy, common }: HeaderProps) {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className={clsx(
+                    className={cn(
                       "relative rounded-sm py-2 text-[15px] font-medium transition-colors hover:text-ink",
                       current ? "text-ink" : "text-ink-muted",
                     )}
@@ -69,7 +69,7 @@ export function Header({ lang, copy, common }: HeaderProps) {
                     {item.label}
                     <span
                       aria-hidden="true"
-                      className={clsx(
+                      className={cn(
                         "absolute -bottom-1 left-1/2 size-1 -translate-x-1/2 rounded-full bg-emerald transition-opacity",
                         current ? "opacity-100" : "opacity-0",
                       )}

@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import type { LucideIcon } from "lucide-react";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { Icon } from "./Icon";
@@ -44,7 +44,7 @@ export function Button(props: ButtonProps) {
     ...rest
   } = props;
 
-  const classes = clsx(
+  const classes = cn(
     "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-button whitespace-nowrap",
     "transition-[background-color,color,transform] duration-200 motion-reduce:transition-none motion-reduce:hover:translate-y-0",
     "disabled:pointer-events-none disabled:opacity-60",

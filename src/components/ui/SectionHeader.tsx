@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cn } from "@/lib/cn";
 import { EyebrowPill } from "./EyebrowPill";
 
 type SectionHeaderProps = {
@@ -29,7 +29,7 @@ export function SectionHeader({ id, eyebrow, title, intro, layout = "center" }: 
   }
 
   return (
-    <header className={clsx("mx-auto mb-12 max-w-3xl text-center lg:mb-16")}>
+    <header className={cn("mx-auto mb-12 max-w-3xl text-center lg:mb-16")}>
       <EyebrowPill>{eyebrow}</EyebrowPill>
       {heading}
       {intro && <p className="mx-auto mt-4 max-w-2xl text-body-md text-ink-muted lg:text-lg">{intro}</p>}
