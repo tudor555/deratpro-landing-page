@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
+import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Services } from "@/components/sections/Services";
@@ -28,6 +29,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <Services copy={dict.services} />
         <WhyUs copy={dict.whyUs} />
         <HowItWorks copy={dict.process} />
+        <Contact copy={dict.contact} common={dict.common} />
       </main>
     </>
   );
