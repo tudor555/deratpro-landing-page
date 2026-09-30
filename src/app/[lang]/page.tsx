@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { FloatingCall } from "@/components/layout/FloatingCall";
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
@@ -31,6 +33,8 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <HowItWorks copy={dict.process} />
         <Contact copy={dict.contact} common={dict.common} />
       </main>
+      <Footer lang={lang} dict={dict} />
+      <FloatingCall label={dict.floatingCall.label} href={dict.common.phoneHref} />
     </>
   );
 }
