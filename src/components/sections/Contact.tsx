@@ -14,12 +14,12 @@ type ContactProps = {
 
 function InfoRow({ icon, label, children }: { icon: LucideIcon; label: string; children: ReactNode }) {
   return (
-    <div className="flex gap-4">
-      <Icon icon={icon} size={22} className="mt-0.5 shrink-0 text-mint-soft" />
-      <div>
-        <dt className="text-caption font-semibold tracking-[0.1em] text-white/70 uppercase">{label}</dt>
-        <dd className="mt-1 text-white">{children}</dd>
-      </div>
+    <div className="relative pl-10">
+      <dt className="text-caption font-semibold tracking-[0.1em] text-white/70 uppercase">
+        <Icon icon={icon} size={22} className="absolute top-0.5 left-0 text-mint-soft" />
+        {label}
+      </dt>
+      <dd className="mt-1 text-white">{children}</dd>
     </div>
   );
 }
