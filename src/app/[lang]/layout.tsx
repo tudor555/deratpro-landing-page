@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LOCALES, isLocale, localeHref } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
+import { inter, jakarta } from "@/lib/fonts";
 import "../globals.css";
 
 export const dynamicParams = false;
@@ -30,7 +31,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   if (!isLocale(lang)) notFound();
 
   return (
-    <html lang={lang}>
+    <html lang={lang} className={`${inter.variable} ${jakarta.variable}`}>
       <body>{children}</body>
     </html>
   );
