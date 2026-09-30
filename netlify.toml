@@ -11,3 +11,5 @@
   from = "/"
   to = "/ro/"
   status = 302
+  # out/index.html exists (a meta-refresh fallback), so force the redirect to take priority.
+  force = true

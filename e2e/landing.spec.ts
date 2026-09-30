@@ -2,6 +2,12 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 test.describe("landing page", () => {
+  test("opens the default language from the bare domain", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/ro\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  });
+
   test("renders every section in Romanian without console errors", async ({ page }) => {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
