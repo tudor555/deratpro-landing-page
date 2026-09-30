@@ -1,4 +1,7 @@
 import { notFound } from "next/navigation";
+import { Header } from "@/components/layout/Header";
+import { Hero } from "@/components/sections/Hero";
+import { StatsCard } from "@/components/sections/StatsCard";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
@@ -8,8 +11,18 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const dict = getDictionary(lang);
 
   return (
-    <main>
-      <h1>{dict.meta.title}</h1>
-    </main>
+    <>
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-md bg-primary px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        {dict.common.skipToContent}
+      </a>
+      <Header lang={lang} copy={dict.header} common={dict.common} />
+      <main id="main">
+        <Hero copy={dict.hero} common={dict.common} />
+        <StatsCard copy={dict.stats} />
+      </main>
+    </>
   );
 }
