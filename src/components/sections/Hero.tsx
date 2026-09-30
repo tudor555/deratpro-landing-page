@@ -53,11 +53,11 @@ export function Hero({ copy, common, background }: HeroProps) {
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 size-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(199_249_204/0.7)_0%,rgb(199_249_204/0)_65%)]" />
         {background}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-background" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-b from-transparent to-background sm:h-40" />
       </div>
 
       <Container className="flex flex-1 flex-col items-center justify-center pt-16 pb-28 text-center lg:pt-20 lg:pb-32">
-        <div className="flex max-w-[880px] flex-col items-center">
+        <div data-hero-content className="flex max-w-[880px] flex-col items-center">
           <EyebrowPill className="px-3 text-[11px] tracking-[0.08em] whitespace-nowrap sm:px-3.5 sm:text-eyebrow sm:tracking-[0.12em]">
             {copy.eyebrow}
           </EyebrowPill>
