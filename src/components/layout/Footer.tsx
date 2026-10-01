@@ -90,7 +90,7 @@ export function Footer({ lang, dict }: FooterProps) {
 
         <div className="mt-14 flex flex-col items-center gap-2 border-t border-white/12 pt-8 text-center text-body-sm text-white/60 lg:flex-row lg:justify-between lg:text-left">
           <p>
-            {footer.copyright}{" "}
+            {footer.copyright.replace("{year}", String(new Date().getFullYear()))}{" "}
             <a
               href={footer.creditHref}
               target="_blank"

@@ -166,7 +166,8 @@ export const en: Dictionary = {
     servicesTitle: "Services",
     companyTitle: "Company",
     contactTitle: "Contact",
-    copyright: "© 2026 DeratPro.",
+    // {year} is filled in when the page is built.
+    copyright: "© {year} DeratPro.",
     credit: "Made with love by Tudor",
     creditHref: "https://github.com/tudor555/deratpro-landing-page",
     legal: "Licensed pest control · Approved biocides",

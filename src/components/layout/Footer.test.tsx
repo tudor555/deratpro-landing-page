@@ -1,5 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Footer } from "./Footer";
 
@@ -45,9 +45,19 @@ describe("Footer", () => {
     expect(within(footer).getByText(ro.contact.info.area)).toBeInTheDocument();
   });
 
+  it("shows the current year in the copyright instead of a hardcoded one", () => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date("2031-03-15T12:00:00Z"));
+    try {
+      renderFooter();
+      expect(screen.getByText(/© 2031 DeratPro\./)).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("credits the author with a link to the source code", () => {
     renderFooter();
-    expect(screen.getByText(ro.footer.copyright)).toBeInTheDocument();
     const credit = screen.getByRole("link", { name: ro.footer.credit });
     expect(credit).toHaveAttribute("href", "https://github.com/tudor555/deratpro-landing-page");
     expect(credit).toHaveAttribute("target", "_blank");

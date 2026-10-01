@@ -165,7 +165,8 @@ export const ro = {
     servicesTitle: "Servicii",
     companyTitle: "Companie",
     contactTitle: "Contact",
-    copyright: "© 2026 DeratPro.",
+    // {year} is filled in when the page is built.
+    copyright: "© {year} DeratPro.",
     credit: "Realizat cu drag de Tudor",
     creditHref: "https://github.com/tudor555/deratpro-landing-page",
     legal: "Combatere autorizată a dăunătorilor · Biocide avizate",
