@@ -164,7 +164,9 @@ export const en: Dictionary = {
     servicesTitle: "Services",
     companyTitle: "Company",
     contactTitle: "Contact",
-    copyright: "© 2026 DeratPro. Demo project — fictional company.",
+    copyright: "© 2026 DeratPro.",
+    credit: "Made with love by Tudor",
+    creditHref: "https://github.com/tudor555/deratpro-landing-page",
     legal: "Licensed pest control operator · Approved biocides",
   },
   floatingCall: {

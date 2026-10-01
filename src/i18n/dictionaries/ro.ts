@@ -164,7 +164,9 @@ export const ro = {
     servicesTitle: "Servicii",
     companyTitle: "Companie",
     contactTitle: "Contact",
-    copyright: "© 2026 DeratPro. Proiect demonstrativ — firmă fictivă.",
+    copyright: "© 2026 DeratPro.",
+    credit: "Realizat cu drag de Tudor",
+    creditHref: "https://github.com/tudor555/deratpro-landing-page",
     legal: "Operator DDD autorizat · Biocide avizate",
   },
   floatingCall: {

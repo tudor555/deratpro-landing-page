@@ -40,9 +40,17 @@ describe("Footer", () => {
     expect(within(footer).getByText(ro.contact.info.area)).toBeInTheDocument();
   });
 
-  it("states that the company is fictional", () => {
+  it("credits the author with a link to the source code", () => {
     renderFooter();
     expect(screen.getByText(ro.footer.copyright)).toBeInTheDocument();
+    const credit = screen.getByRole("link", { name: ro.footer.credit });
+    expect(credit).toHaveAttribute("href", "https://github.com/tudor555/deratpro-landing-page");
+    expect(credit).toHaveAttribute("target", "_blank");
+    expect(credit).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("closes with the licensing line", () => {
+    renderFooter();
     expect(screen.getByText(ro.footer.legal)).toBeInTheDocument();
   });
 });

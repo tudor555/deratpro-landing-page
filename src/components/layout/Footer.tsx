@@ -89,7 +89,17 @@ export function Footer({ lang, dict }: FooterProps) {
         </div>
 
         <div className="mt-14 flex flex-col items-center gap-2 border-t border-white/12 pt-8 text-center text-body-sm text-white/60 lg:flex-row lg:justify-between lg:text-left">
-          <p>{footer.copyright}</p>
+          <p>
+            {footer.copyright}{" "}
+            <a
+              href={footer.creditHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm text-white/72 underline-offset-4 transition-colors hover:text-white hover:underline"
+            >
+              {footer.credit}
+            </a>
+          </p>
           <p>{footer.legal}</p>
         </div>
       </Container>
