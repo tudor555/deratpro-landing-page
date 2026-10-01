@@ -4,10 +4,10 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Contact } from "@/components/sections/contact/Contact";
 import { Hero } from "@/components/sections/hero/Hero";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Services } from "@/components/sections/Services";
-import { StatsCard } from "@/components/sections/StatsCard";
-import { WhyUs } from "@/components/sections/WhyUs";
+import { HowItWorks } from "@/components/sections/how-it-works/HowItWorks";
+import { Services } from "@/components/sections/services/Services";
+import { StatsCard } from "@/components/sections/stats/StatsCard";
+import { WhyUs } from "@/components/sections/why-us/WhyUs";
 import { isLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
