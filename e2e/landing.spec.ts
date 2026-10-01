@@ -18,7 +18,12 @@ test.describe("landing page", () => {
     await page.goto("/ro/");
     await expect(page.locator("html")).toHaveAttribute("lang", "ro");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("fără dăunători");
-    for (const name of ["Tot ce ai nevoie", "De ce aleg clienții DeratPro", "Simplu, în 3 pași", "Cere o ofertă gratuită"]) {
+    for (const name of [
+      "Tot ce ai nevoie",
+      "De ce aleg clienții DeratPro",
+      "Simplu, în 3 pași",
+      "Cere o ofertă gratuită",
+    ]) {
       await expect(page.getByRole("heading", { level: 2, name: new RegExp(name) })).toBeVisible();
     }
     expect(errors).toEqual([]);

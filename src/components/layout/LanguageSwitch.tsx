@@ -21,7 +21,11 @@ function rememberScroll() {
 
 export function LanguageSwitch({ lang, label, className }: LanguageSwitchProps) {
   return (
-    <div role="group" aria-label={label} className={cn("flex h-8 items-center rounded-full bg-line/60 p-0.5", className)}>
+    <div
+      role="group"
+      aria-label={label}
+      className={cn("flex h-8 items-center rounded-full bg-line/60 p-0.5", className)}
+    >
       {LOCALES.map((locale) => {
         const current = locale === lang;
         return (

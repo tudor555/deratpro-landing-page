@@ -19,7 +19,15 @@ export function Sparkles({ count }: { count: number }) {
     const material = createSpriteMaterial(texture);
     const points = new Points(buffers.geometry, material);
     points.frustumCulled = false;
-    return { texture, buffers, material, points, life: new Float32Array(count).fill(1), velocity: new Float32Array(count * 3), cursor: 0 };
+    return {
+      texture,
+      buffers,
+      material,
+      points,
+      life: new Float32Array(count).fill(1),
+      velocity: new Float32Array(count * 3),
+      cursor: 0,
+    };
   }, [count]);
 
   useEffect(

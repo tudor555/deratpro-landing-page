@@ -85,7 +85,8 @@ export function SprayMist({ sweepCount, trailCount }: { sweepCount: number; trai
       s.position[i * 3 + 1] = (seed.lane - 0.5) * height * 1.05 + Math.sin(time * 1.6 + i) * 0.35;
       s.position[i * 3 + 2] = Math.cos(i * 2 + time) * 1.4;
       s.size[i] = seed.size * (0.7 + age * 0.6);
-      s.alpha[i] = Math.sin(age * Math.PI) * 0.3 * phaseFade * calmFade(s.position[i * 3], s.position[i * 3 + 1], store);
+      s.alpha[i] =
+        Math.sin(age * Math.PI) * 0.3 * phaseFade * calmFade(s.position[i * 3], s.position[i * 3 + 1], store);
       s.angle[i] += seed.spin * delta;
     });
     s.markDirty();

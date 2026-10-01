@@ -94,10 +94,25 @@ function buildLeg(material: MeshStandardMaterial, side: number, kind: "front" | 
   const pivot = new Group();
   const z = side * 0.05;
   const shapes = {
-    front: [new Vector3(0, 0, z), new Vector3(0.22, -0.12, z * 3), new Vector3(0.38, -0.42, z * 4.5), new Vector3(0.46, -0.8, z * 5)],
-    mid: [new Vector3(0, 0, z), new Vector3(0.02, -0.16, z * 4.5), new Vector3(-0.06, -0.5, z * 6.5), new Vector3(-0.1, -0.92, z * 7)],
+    front: [
+      new Vector3(0, 0, z),
+      new Vector3(0.22, -0.12, z * 3),
+      new Vector3(0.38, -0.42, z * 4.5),
+      new Vector3(0.46, -0.8, z * 5),
+    ],
+    mid: [
+      new Vector3(0, 0, z),
+      new Vector3(0.02, -0.16, z * 4.5),
+      new Vector3(-0.06, -0.5, z * 6.5),
+      new Vector3(-0.1, -0.92, z * 7),
+    ],
     // Aedes lift their hind legs up and back while flying.
-    hind: [new Vector3(0, 0, z), new Vector3(-0.22, -0.1, z * 3.5), new Vector3(-0.55, 0.05, z * 4.5), new Vector3(-0.9, 0.3, z * 4)],
+    hind: [
+      new Vector3(0, 0, z),
+      new Vector3(-0.22, -0.1, z * 3.5),
+      new Vector3(-0.55, 0.05, z * 4.5),
+      new Vector3(-0.9, 0.3, z * 4),
+    ],
   };
   const curve = new CatmullRomCurve3(shapes[kind]);
   pivot.add(new Mesh(taperTube(curve, 24, 0.011, 0.004, 5), material));
@@ -113,7 +128,10 @@ function buildMosquito(uniforms: DissolveUniforms) {
     new MeshPhysicalMaterial({ color: "#2b2f33", roughness: 0.45, sheen: 0.6, sheenColor: new Color("#9aa7b0") }),
     uniforms,
   );
-  const banded = withDissolve(new MeshPhysicalMaterial({ color: "#ffffff", vertexColors: true, roughness: 0.4, sheen: 0.4 }), uniforms);
+  const banded = withDissolve(
+    new MeshPhysicalMaterial({ color: "#ffffff", vertexColors: true, roughness: 0.4, sheen: 0.4 }),
+    uniforms,
+  );
   const eyes = withDissolve(
     new MeshPhysicalMaterial({ color: "#2a0f12", roughness: 0.15, clearcoat: 1, clearcoatRoughness: 0.1 }),
     uniforms,
@@ -121,7 +139,13 @@ function buildMosquito(uniforms: DissolveUniforms) {
   const legMat = withDissolve(new MeshStandardMaterial({ color: "#33373b", roughness: 0.5 }), uniforms);
   const wingTexture = createWingTexture();
   const wingMat = withDissolve(
-    new MeshStandardMaterial({ map: wingTexture, transparent: true, depthWrite: false, side: DoubleSide, roughness: 0.2 }),
+    new MeshStandardMaterial({
+      map: wingTexture,
+      transparent: true,
+      depthWrite: false,
+      side: DoubleSide,
+      roughness: 0.2,
+    }),
     uniforms,
   );
   const blurMat = withDissolve(
@@ -152,7 +176,11 @@ function buildMosquito(uniforms: DissolveUniforms) {
     body.add(eye);
   }
 
-  const proboscis = new CatmullRomCurve3([new Vector3(0.3, -0.05, 0), new Vector3(0.5, -0.17, 0), new Vector3(0.72, -0.34, 0)]);
+  const proboscis = new CatmullRomCurve3([
+    new Vector3(0.3, -0.05, 0),
+    new Vector3(0.5, -0.17, 0),
+    new Vector3(0.72, -0.34, 0),
+  ]);
   body.add(new Mesh(taperTube(proboscis, 16, 0.016, 0.004, 6), legMat));
   for (const side of [1, -1]) {
     const antenna = new CatmullRomCurve3([

@@ -17,14 +17,14 @@ type CommonProps = {
 };
 
 type LinkProps = CommonProps & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof CommonProps> & { href: string };
-type NativeButtonProps = CommonProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof CommonProps> & { href?: undefined };
+type NativeButtonProps = CommonProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof CommonProps> & { href?: undefined };
 
 export type ButtonProps = LinkProps | NativeButtonProps;
 
 const variants: Record<Variant, string> = {
   primary: "bg-primary text-white hover:bg-primary-strong hover:-translate-y-px",
-  secondary:
-    "border-[1.5px] border-primary text-primary hover:bg-mint-haze hover:text-primary-strong",
+  secondary: "border-[1.5px] border-primary text-primary hover:bg-mint-haze hover:text-primary-strong",
 };
 
 const sizes: Record<Size, string> = {

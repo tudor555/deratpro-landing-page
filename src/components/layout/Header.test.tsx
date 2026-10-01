@@ -14,7 +14,9 @@ describe("Header", () => {
   it("links every nav item to its section", () => {
     renderHeader();
     const nav = screen.getByRole("navigation", { name: ro.header.navLabel });
-    const hrefs = within(nav).getAllByRole("link").map((link) => link.getAttribute("href"));
+    const hrefs = within(nav)
+      .getAllByRole("link")
+      .map((link) => link.getAttribute("href"));
     expect(hrefs).toEqual(["#servicii", "#de-ce-noi", "#cum-functioneaza", "#contact"]);
   });
 

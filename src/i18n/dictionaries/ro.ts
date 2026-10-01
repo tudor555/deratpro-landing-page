@@ -57,8 +57,7 @@ export const ro = {
     items: [
       {
         title: "Deratizare",
-        description:
-          "Eliminăm șoarecii și șobolanii din casă, depozit sau restaurant, cu soluții sigure și discrete.",
+        description: "Eliminăm șoarecii și șobolanii din casă, depozit sau restaurant, cu soluții sigure și discrete.",
         features: ["Stații de momire securizate", "Monitorizare periodică", "Sigur pentru copii și animale"],
       },
       {

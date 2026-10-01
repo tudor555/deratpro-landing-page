@@ -20,7 +20,11 @@ describe("Services", () => {
       const service = ro.services.items[i];
       expect(within(card).getByRole("heading", { level: 3, name: service.title })).toBeInTheDocument();
       expect(within(card).getByText(service.description)).toBeInTheDocument();
-      expect(within(card).getAllByRole("listitem").map((li) => li.textContent)).toEqual(service.features);
+      expect(
+        within(card)
+          .getAllByRole("listitem")
+          .map((li) => li.textContent),
+      ).toEqual(service.features);
       const link = within(card).getByRole("link", { name: `${ro.services.cta}: ${service.title}` });
       expect(link).toHaveAttribute("href", "#contact");
     });
@@ -29,6 +33,10 @@ describe("Services", () => {
   it("lists who DeratPro works for", () => {
     render(<Services copy={ro.services} />);
     const audiences = screen.getByRole("list", { name: ro.services.audienceLabel });
-    expect(within(audiences).getAllByRole("listitem").map((li) => li.textContent)).toEqual(ro.services.audiences);
+    expect(
+      within(audiences)
+        .getAllByRole("listitem")
+        .map((li) => li.textContent),
+    ).toEqual(ro.services.audiences);
   });
 });

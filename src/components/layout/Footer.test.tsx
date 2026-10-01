@@ -21,22 +21,27 @@ describe("Footer", () => {
   it("links services and company pages to their sections", () => {
     renderFooter();
     const services = screen.getByRole("navigation", { name: ro.footer.servicesTitle });
-    expect(within(services).getAllByRole("link").map((a) => [a.textContent, a.getAttribute("href")])).toEqual(
-      ro.services.items.map((item) => [item.title, "#servicii"]),
-    );
+    expect(
+      within(services)
+        .getAllByRole("link")
+        .map((a) => [a.textContent, a.getAttribute("href")]),
+    ).toEqual(ro.services.items.map((item) => [item.title, "#servicii"]));
     const company = screen.getByRole("navigation", { name: ro.footer.companyTitle });
-    expect(within(company).getAllByRole("link").map((a) => a.getAttribute("href"))).toEqual([
-      "#de-ce-noi",
-      "#cum-functioneaza",
-      "#contact",
-    ]);
+    expect(
+      within(company)
+        .getAllByRole("link")
+        .map((a) => a.getAttribute("href")),
+    ).toEqual(["#de-ce-noi", "#cum-functioneaza", "#contact"]);
   });
 
   it("repeats the direct contact details", () => {
     renderFooter();
     const footer = screen.getByRole("contentinfo");
     expect(within(footer).getByRole("link", { name: ro.common.phone })).toHaveAttribute("href", ro.common.phoneHref);
-    expect(within(footer).getByRole("link", { name: ro.common.email })).toHaveAttribute("href", `mailto:${ro.common.email}`);
+    expect(within(footer).getByRole("link", { name: ro.common.email })).toHaveAttribute(
+      "href",
+      `mailto:${ro.common.email}`,
+    );
     expect(within(footer).getByText(ro.contact.info.area)).toBeInTheDocument();
   });
 

@@ -13,13 +13,7 @@ export const LOGO_CHECK_PATH = "m11 16.2 3.4 3.4 6.6-7";
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" className={cn("size-8 shrink-0", className)}>
-      <path
-        d={LOGO_HEX_PATH}
-        fill="currentColor"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinejoin="round"
-      />
+      <path d={LOGO_HEX_PATH} fill="currentColor" stroke="currentColor" strokeWidth="3" strokeLinejoin="round" />
       <path
         d={LOGO_CHECK_PATH}
         fill="none"

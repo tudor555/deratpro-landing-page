@@ -20,6 +20,10 @@ describe("StatsCard", () => {
   it("lists the certifications under a label", () => {
     render(<StatsCard copy={ro.stats} />);
     const list = screen.getByRole("list", { name: ro.stats.certificationsLabel });
-    expect(within(list).getAllByRole("listitem").map((item) => item.textContent)).toEqual(ro.stats.certifications);
+    expect(
+      within(list)
+        .getAllByRole("listitem")
+        .map((item) => item.textContent),
+    ).toEqual(ro.stats.certifications);
   });
 });

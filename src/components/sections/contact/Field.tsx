@@ -13,8 +13,14 @@ type BaseProps = {
   error?: string;
 };
 
-type InputFieldProps = BaseProps & { multiline?: false; ref?: Ref<HTMLInputElement> } & InputHTMLAttributes<HTMLInputElement>;
-type TextareaFieldProps = BaseProps & { multiline: true; ref?: Ref<HTMLTextAreaElement> } & TextareaHTMLAttributes<HTMLTextAreaElement>;
+type InputFieldProps = BaseProps & {
+  multiline?: false;
+  ref?: Ref<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
+type TextareaFieldProps = BaseProps & {
+  multiline: true;
+  ref?: Ref<HTMLTextAreaElement>;
+} & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function Field(props: InputFieldProps | TextareaFieldProps) {
   const { id, label, error } = props;
@@ -28,7 +34,9 @@ export function Field(props: InputFieldProps | TextareaFieldProps) {
   let input;
   if (props.multiline) {
     const { multiline: _multiline, label: _label, error: _error, className, ...rest } = props;
-    input = <textarea {...rest} {...a11y} className={cn(control, "h-35 resize-y py-3.5", error && invalid, className)} />;
+    input = (
+      <textarea {...rest} {...a11y} className={cn(control, "h-35 resize-y py-3.5", error && invalid, className)} />
+    );
   } else {
     const { multiline: _multiline, label: _label, error: _error, className, ...rest } = props;
     input = <input {...rest} {...a11y} className={cn(control, "h-13", error && invalid, className)} />;

@@ -108,17 +108,32 @@ function buildMouse(uniforms: DissolveUniforms) {
     uniforms,
   );
   const earFur = withDissolve(
-    new MeshPhysicalMaterial({ color: "#8f7a67", roughness: 0.85, sheen: 1, sheenColor: new Color("#f3e6d8"), side: DoubleSide }),
+    new MeshPhysicalMaterial({
+      color: "#8f7a67",
+      roughness: 0.85,
+      sheen: 1,
+      sheenColor: new Color("#f3e6d8"),
+      side: DoubleSide,
+    }),
     uniforms,
   );
-  const pink = withDissolve(new MeshStandardMaterial({ color: "#eaa5a8", roughness: 0.55, side: DoubleSide }), uniforms);
+  const pink = withDissolve(
+    new MeshStandardMaterial({ color: "#eaa5a8", roughness: 0.55, side: DoubleSide }),
+    uniforms,
+  );
   const skin = withDissolve(new MeshStandardMaterial({ color: "#e7b3ac", roughness: 0.6 }), uniforms);
   const eyeMat = withDissolve(
     new MeshPhysicalMaterial({ color: "#0b0d10", roughness: 0.05, clearcoat: 1, clearcoatRoughness: 0.05 }),
     uniforms,
   );
-  const glint = withDissolve(new MeshStandardMaterial({ color: "#ffffff", emissive: "#ffffff", emissiveIntensity: 0.8 }), uniforms);
-  const whiskerMat = withDissolve(new MeshStandardMaterial({ color: "#f4efe8", roughness: 0.4, transparent: true, opacity: 0.8 }), uniforms);
+  const glint = withDissolve(
+    new MeshStandardMaterial({ color: "#ffffff", emissive: "#ffffff", emissiveIntensity: 0.8 }),
+    uniforms,
+  );
+  const whiskerMat = withDissolve(
+    new MeshStandardMaterial({ color: "#f4efe8", roughness: 0.4, transparent: true, opacity: 0.8 }),
+    uniforms,
+  );
 
   figure.add(new Mesh(buildBodyGeometry(), fur));
   figure.add(buildEar(earFur, pink, 1), buildEar(earFur, pink, -1));

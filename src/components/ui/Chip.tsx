@@ -7,7 +7,7 @@ export function Chip({ icon, children, className }: { icon: LucideIcon; children
   return (
     <span
       className={cn(
-        "inline-flex h-10 shrink-0 items-center gap-2 rounded-full whitespace-nowrap border border-line bg-surface px-4 text-label text-ink",
+        "inline-flex h-10 shrink-0 items-center gap-2 rounded-full border border-line bg-surface px-4 text-label whitespace-nowrap text-ink",
         className,
       )}
     >

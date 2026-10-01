@@ -23,8 +23,7 @@ export function usePest(uniforms: DissolveUniforms, hitRadius: number, sparkleCo
     const front = sweepFrontX(frame.sweep, store.viewport);
     const hitBySweep = front !== null && front >= position.x;
     const { world } = store.pointer;
-    const hitByNozzle =
-      isSpraying(store) && Math.hypot(world.x - position.x, world.y - position.y) < hitRadius;
+    const hitByNozzle = isSpraying(store) && Math.hypot(world.x - position.x, world.y - position.y) < hitRadius;
 
     const wasIntact = life.current.dissolvedAt === null;
     life.current = updatePestLife(life.current, frame, hitBySweep || hitByNozzle);

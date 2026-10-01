@@ -7,7 +7,12 @@ describe("Section + SectionHeader", () => {
   it("labels the section with its heading", () => {
     render(
       <Section id="servicii" tone="surface">
-        <SectionHeader id="servicii-title" eyebrow="Servicii" title="Tot ce ai nevoie" intro="Tratamente profesionale." />
+        <SectionHeader
+          id="servicii-title"
+          eyebrow="Servicii"
+          title="Tot ce ai nevoie"
+          intro="Tratamente profesionale."
+        />
       </Section>,
     );
 

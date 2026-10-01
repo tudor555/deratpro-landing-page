@@ -60,7 +60,10 @@ export function Hero({ copy, common }: HeroProps) {
             {copy.eyebrow}
           </EyebrowPill>
 
-          <h1 id="hero-title" className="mt-6 font-display text-display-mobile text-ink text-balance sm:text-[56px] lg:text-display">
+          <h1
+            id="hero-title"
+            className="mt-6 font-display text-display-mobile text-balance text-ink sm:text-[56px] lg:text-display"
+          >
             {copy.titleLine1} <br className="hidden sm:block" />
             {copy.titleLine2}{" "}
             <span className="relative inline-block whitespace-nowrap">

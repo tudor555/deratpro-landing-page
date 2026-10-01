@@ -9,7 +9,12 @@ const STEP_ICONS = [Phone, ClipboardCheck, Sparkles];
 export function HowItWorks({ copy }: { copy: Dictionary["process"] }) {
   return (
     <Section id="cum-functioneaza" tone="surface">
-      <SectionHeader id={sectionTitleId("cum-functioneaza")} eyebrow={copy.eyebrow} title={copy.title} intro={copy.intro} />
+      <SectionHeader
+        id={sectionTitleId("cum-functioneaza")}
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        intro={copy.intro}
+      />
 
       <ol className="relative flex flex-col gap-10 lg:grid lg:grid-cols-3 lg:gap-6">
         <span

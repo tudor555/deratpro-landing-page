@@ -31,7 +31,10 @@ export function StatsCard({ copy }: { copy: Dictionary["stats"] }) {
         </ul>
 
         <div className="mt-6 flex flex-col items-center gap-3 lg:flex-row lg:justify-center lg:gap-4">
-          <span id="certifications-label" className="text-caption font-medium tracking-[0.08em] text-ink-muted uppercase">
+          <span
+            id="certifications-label"
+            className="text-caption font-medium tracking-[0.08em] text-ink-muted uppercase"
+          >
             {copy.certificationsLabel}
           </span>
           <ul aria-labelledby="certifications-label" className="flex flex-wrap justify-center gap-2">

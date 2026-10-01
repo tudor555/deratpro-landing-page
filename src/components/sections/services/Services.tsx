@@ -13,7 +13,13 @@ const AUDIENCE_ICONS = [House, Building2, Utensils, Warehouse];
 export function Services({ copy }: { copy: Dictionary["services"] }) {
   return (
     <Section id="servicii" tone="surface">
-      <SectionHeader id={sectionTitleId("servicii")} layout="split" eyebrow={copy.eyebrow} title={copy.title} intro={copy.intro} />
+      <SectionHeader
+        id={sectionTitleId("servicii")}
+        layout="split"
+        eyebrow={copy.eyebrow}
+        title={copy.title}
+        intro={copy.intro}
+      />
 
       <div className="grid gap-6 md:grid-cols-3">
         {copy.items.map((service, i) => (

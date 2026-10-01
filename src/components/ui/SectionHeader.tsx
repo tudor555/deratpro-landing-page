@@ -11,7 +11,7 @@ type SectionHeaderProps = {
 
 export function SectionHeader({ id, eyebrow, title, intro, layout = "center" }: SectionHeaderProps) {
   const heading = (
-    <h2 id={id} className="mt-4 font-display text-h2-mobile text-ink text-balance lg:text-h2">
+    <h2 id={id} className="mt-4 font-display text-h2-mobile text-balance text-ink lg:text-h2">
       {title}
     </h2>
   );
