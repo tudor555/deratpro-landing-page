@@ -1,8 +1,9 @@
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Header } from "./Header";
+import { SCROLL_RESTORE_KEY } from "./LanguageSwitch";
 
 const ro = getDictionary("ro");
 
@@ -61,5 +62,66 @@ describe("Header", () => {
     const menu = document.getElementById(toggle.getAttribute("aria-controls")!)!;
     await user.click(within(menu).getByRole("link", { name: "Contact" }));
     expect(toggle).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("returns to the same spot after switching language", () => {
+    const scrollTo = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
+    sessionStorage.setItem(SCROLL_RESTORE_KEY, "640");
+    renderHeader();
+    expect(scrollTo).toHaveBeenCalledWith({ top: 640, behavior: "instant" });
+    expect(sessionStorage.getItem(SCROLL_RESTORE_KEY)).toBeNull();
+    scrollTo.mockRestore();
+  });
+
+  it("leaves the scroll alone on a normal visit or when storage is blocked", () => {
+    const scrollTo = vi.spyOn(window, "scrollTo").mockImplementation(() => {});
+    renderHeader();
+    vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
+      throw new Error("SecurityError");
+    });
+    renderHeader();
+    expect(scrollTo).not.toHaveBeenCalled();
+    vi.restoreAllMocks();
+  });
+
+  it("highlights the nav item of the section on screen", () => {
+    let report: IntersectionObserverCallback = () => {};
+    vi.stubGlobal(
+      "IntersectionObserver",
+      class {
+        constructor(callback: IntersectionObserverCallback) {
+          report = callback;
+        }
+        observe() {}
+        disconnect() {}
+      },
+    );
+    render(
+      <>
+        <section id="servicii" />
+        <Header lang="ro" copy={ro.header} common={ro.common} />
+      </>,
+    );
+    act(() =>
+      report(
+        [
+          { isIntersecting: true, target: document.getElementById("servicii") },
+        ] as unknown as IntersectionObserverEntry[],
+        {} as IntersectionObserver,
+      ),
+    );
+    const nav = screen.getByRole("navigation", { name: ro.header.navLabel });
+    expect(within(nav).getByRole("link", { name: "Servicii" })).toHaveClass("text-ink");
+    expect(within(nav).getByRole("link", { name: "Contact" })).toHaveClass("text-ink-muted");
+    vi.unstubAllGlobals();
+  });
+
+  it("keeps the mobile menu open for keys other than Escape", async () => {
+    const user = userEvent.setup();
+    renderHeader();
+    const toggle = screen.getByRole("button", { name: ro.header.openMenu });
+    await user.click(toggle);
+    await user.keyboard("{ArrowDown}");
+    expect(toggle).toHaveAttribute("aria-expanded", "true");
   });
 });
