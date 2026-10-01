@@ -95,4 +95,16 @@ describe("ContactForm", () => {
     expect(screen.getByLabelText(form.name.label)).toHaveValue("");
     expect(screen.getByLabelText(form.name.label)).toHaveFocus();
   });
+
+  it("shows a sending state, then confirms, when no delivery is wired up", async () => {
+    const user = userEvent.setup();
+    render(<ContactForm copy={form} />);
+    await user.type(screen.getByLabelText(form.name.label), "Ion Popescu");
+    await user.type(screen.getByLabelText(form.phone.label), "0722000000");
+    await user.type(screen.getByLabelText(form.message.label), "Am șoareci în pod.");
+    await user.click(screen.getByRole("button", { name: form.submit }));
+
+    expect(screen.getByRole("button", { name: form.sending })).toBeDisabled();
+    expect(await screen.findByRole("heading", { name: form.success.title }, { timeout: 2000 })).toBeInTheDocument();
+  });
 });
