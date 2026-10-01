@@ -3,7 +3,8 @@ import type { ReactNode } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { Section, sectionTitleId } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Glow, HexPattern } from "@/components/ui/Surfaces";
+import { Glow } from "@/components/ui/Glow";
+import { HexPattern } from "@/components/ui/HexPattern";
 import { ContactForm } from "./ContactForm";
 import type { Dictionary } from "@/i18n/dictionaries";
 

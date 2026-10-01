@@ -2,7 +2,7 @@ import { ArrowRight, Building2, Bug, CircleCheck, House, Rat, SprayCan, Utensils
 import { Card } from "@/components/ui/Card";
 import { Icon } from "@/components/ui/Icon";
 import { IconTile } from "@/components/ui/IconTile";
-import { Chip } from "@/components/ui/Pill";
+import { Chip } from "@/components/ui/Chip";
 import { Section, sectionTitleId } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import type { Dictionary } from "@/i18n/dictionaries";

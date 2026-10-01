@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
-import { Badge } from "@/components/ui/Pill";
+import { Badge } from "@/components/ui/Badge";
 import { type Locale, localeHref } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 

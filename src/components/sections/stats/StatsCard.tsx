@@ -1,6 +1,6 @@
 import { cn } from "@/lib/cn";
 import { Container } from "@/components/ui/Container";
-import { Badge } from "@/components/ui/Pill";
+import { Badge } from "@/components/ui/Badge";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 export function StatsCard({ copy }: { copy: Dictionary["stats"] }) {

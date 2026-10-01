@@ -3,7 +3,8 @@ import { Card } from "@/components/ui/Card";
 import { IconTile } from "@/components/ui/IconTile";
 import { Section, sectionTitleId } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Glow, HexPattern } from "@/components/ui/Surfaces";
+import { Glow } from "@/components/ui/Glow";
+import { HexPattern } from "@/components/ui/HexPattern";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 const ITEM_ICONS = [FlaskConical, BadgeCheck];
