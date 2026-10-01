@@ -1,0 +1,40 @@
+import { notFound } from "next/navigation";
+import { FloatingCall } from "@/components/layout/FloatingCall";
+import { Footer } from "@/components/layout/Footer";
+import { Header } from "@/components/layout/Header";
+import { Contact } from "@/components/sections/contact/Contact";
+import { Hero } from "@/components/sections/hero/Hero";
+import { HowItWorks } from "@/components/sections/how-it-works/HowItWorks";
+import { Services } from "@/components/sections/services/Services";
+import { StatsCard } from "@/components/sections/stats/StatsCard";
+import { WhyUs } from "@/components/sections/why-us/WhyUs";
+import { isLocale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
+
+export default async function HomePage({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const dict = getDictionary(lang);
+
+  return (
+    <>
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-md bg-primary px-4 py-3 text-white focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        {dict.common.skipToContent}
+      </a>
+      <Header lang={lang} copy={dict.header} common={dict.common} />
+      <main id="main">
+        <Hero copy={dict.hero} common={dict.common} />
+        <StatsCard copy={dict.stats} />
+        <Services copy={dict.services} />
+        <WhyUs copy={dict.whyUs} />
+        <HowItWorks copy={dict.process} />
+        <Contact copy={dict.contact} common={dict.common} />
+      </main>
+      <Footer lang={lang} dict={dict} />
+      <FloatingCall label={dict.floatingCall.label} href={dict.common.phoneHref} />
+    </>
+  );
+}

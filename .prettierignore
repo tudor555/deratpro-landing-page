@@ -1,0 +1,12 @@
+# build output and dependencies
+.next/
+out/
+node_modules/
+coverage/
+test-results/
+playwright-report/
+pnpm-lock.yaml
+next-env.d.ts
+
+# raw Google Stitch exports, kept exactly as the tool produced them
+docs/design-output/

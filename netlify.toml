@@ -1,0 +1,15 @@
+[build]
+  command = "pnpm build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# The site has no root page; send visitors to the default locale.
+# Keep in sync with DEFAULT_LOCALE in src/i18n/config.ts.
+[[redirects]]
+  from = "/"
+  to = "/ro/"
+  status = 302
+  # out/index.html exists (a meta-refresh fallback), so force the redirect to take priority.
+  force = true
