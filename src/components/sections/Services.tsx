@@ -45,12 +45,7 @@ export function Services({ copy }: { copy: Dictionary["services"] }) {
         <span id="audiences-label" className="text-body-sm text-ink-muted">
           {copy.audienceLabel}
         </span>
-        {/* Scrolls sideways on phones, so it must be reachable by keyboard. */}
-        <ul
-          aria-labelledby="audiences-label"
-          tabIndex={0}
-          className="rounded-md -mx-4 flex max-w-[calc(100%+2rem)] gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:max-w-full sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0"
-        >
+        <ul aria-labelledby="audiences-label" className="flex flex-wrap justify-center gap-2.5 sm:gap-3">
           {copy.audiences.map((audience, i) => (
             <li key={audience}>
               <Chip icon={AUDIENCE_ICONS[i]}>{audience}</Chip>
