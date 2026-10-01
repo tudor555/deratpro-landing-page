@@ -17,6 +17,8 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
       exclude: ["src/**/*.test.{ts,tsx}", "src/test/**"],
       reporter: ["text", "html"],
+      // Only two defensive guards in the 3D scene stay uncovered; anything else failing these is a real gap.
+      thresholds: { lines: 100, functions: 100, statements: 99, branches: 98 },
     },
   },
 });
