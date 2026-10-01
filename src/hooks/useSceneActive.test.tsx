@@ -67,4 +67,13 @@ describe("useSceneActive", () => {
     unmount();
     expect(disconnect).toHaveBeenCalled();
   });
+
+  it("stays paused when there is no element to watch", () => {
+    function Detached() {
+      const active = useSceneActive({ current: null });
+      return <p>{active ? "active" : "paused"}</p>;
+    }
+    render(<Detached />);
+    expect(screen.getByText("paused")).toBeInTheDocument();
+  });
 });
