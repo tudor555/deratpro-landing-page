@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { DEFAULT_LOCALE, LOCALES, isLocale, localeHref } from "./config";
 
@@ -23,5 +25,13 @@ describe("i18n config", () => {
   it("builds locale home links with a trailing slash", () => {
     expect(localeHref("en")).toBe("/en/");
     expect(localeHref("ro", "#contact")).toBe("/ro/#contact");
+  });
+});
+
+describe("netlify root redirect", () => {
+  it("points / at the default locale", () => {
+    const toml = readFileSync(join(process.cwd(), "netlify.toml"), "utf8");
+    const rootRedirect = toml.match(/from = "\/"\s+to = "([^"]+)"/);
+    expect(rootRedirect?.[1]).toBe(localeHref(DEFAULT_LOCALE));
   });
 });

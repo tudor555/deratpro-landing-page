@@ -49,6 +49,11 @@ describe("dictionaries", () => {
     expect(withAcronym).toEqual([]);
   });
 
+  it("names Bihor and Cluj counties as the service area", () => {
+    expect(getDictionary("ro").contact.info.area).toBe("Județele Bihor și Cluj");
+    expect(getDictionary("en").contact.info.area).toBe("Bihor and Cluj counties");
+  });
+
   it("uses Romanian diacritics with comma-below, never cedilla", () => {
     const text = collectStrings(getDictionary("ro")).join(" ");
     expect(text).not.toMatch(/[şŞţŢ]/);
