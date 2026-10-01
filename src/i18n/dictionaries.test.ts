@@ -44,6 +44,11 @@ describe("dictionaries", () => {
     expect(withDash).toEqual([]);
   });
 
+  it.each(LOCALES)("spells out services instead of the DDD trade acronym in %s", (locale) => {
+    const withAcronym = collectStrings(getDictionary(locale)).filter((text) => /\bDDD\b/.test(text));
+    expect(withAcronym).toEqual([]);
+  });
+
   it("uses Romanian diacritics with comma-below, never cedilla", () => {
     const text = collectStrings(getDictionary("ro")).join(" ");
     expect(text).not.toMatch(/[şŞţŢ]/);

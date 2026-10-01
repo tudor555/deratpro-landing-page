@@ -36,7 +36,7 @@ export const en: Dictionary = {
     secondaryCta: "Call now",
     rating: "4.9/5 from 300+ reviews",
     ratingLabel: "Rated 4.9 out of 5",
-    license: "Licensed pest control operator",
+    license: "Licensed pest control company",
     scrollHint: "Explore our services",
   },
   stats: {
@@ -167,7 +167,7 @@ export const en: Dictionary = {
     copyright: "© 2026 DeratPro.",
     credit: "Made with love by Tudor",
     creditHref: "https://github.com/tudor555/deratpro-landing-page",
-    legal: "Licensed pest control operator · Approved biocides",
+    legal: "Licensed pest control · Approved biocides",
   },
   floatingCall: {
     label: "Call now at 0722 000 000",

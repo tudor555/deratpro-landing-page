@@ -34,7 +34,7 @@ export const ro = {
     secondaryCta: "Sună acum",
     rating: "4.9/5 din 300+ recenzii",
     ratingLabel: "Rating 4.9 din 5",
-    license: "Operator DDD autorizat",
+    license: "Firmă autorizată pentru combaterea dăunătorilor",
     scrollHint: "Descoperă serviciile",
   },
   stats: {
@@ -100,7 +100,7 @@ export const ro = {
       },
       {
         title: "Personal autorizat",
-        text: "Tehnicieni instruiți și certificați pentru servicii DDD, cu echipament profesional.",
+        text: "Tehnicieni instruiți și certificați pentru deratizare, dezinsecție și dezinfecție, cu echipament profesional.",
       },
     ],
   },
@@ -167,7 +167,7 @@ export const ro = {
     copyright: "© 2026 DeratPro.",
     credit: "Realizat cu drag de Tudor",
     creditHref: "https://github.com/tudor555/deratpro-landing-page",
-    legal: "Operator DDD autorizat · Biocide avizate",
+    legal: "Combatere autorizată a dăunătorilor · Biocide avizate",
   },
   floatingCall: {
     label: "Sună acum la 0722 000 000",
