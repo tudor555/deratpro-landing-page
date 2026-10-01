@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "preview": "serve out",
     "test:e2e": "playwright test",
     "format": "prettier --write .",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "^1.63.0",
+    "@react-three/test-renderer": "^9.1.1",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
@@ -38,6 +40,7 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^6.1.1",
+    "@vitest/coverage-v8": "5.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.7",
     "husky": "^9.1.7",
