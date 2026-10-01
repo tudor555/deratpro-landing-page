@@ -30,3 +30,15 @@ describe("createThreeConsole", () => {
     expect(base.error).toHaveBeenCalledWith(new Error("THREE.Material: broken"));
   });
 });
+
+describe("installThreeConsole", () => {
+  it("routes three.js logging through the filter", async () => {
+    vi.resetModules();
+    const setConsoleFunction = vi.fn();
+    vi.doMock("three", () => ({ setConsoleFunction }));
+    const { installThreeConsole } = await import("./threeConsole");
+    installThreeConsole();
+    expect(setConsoleFunction).toHaveBeenCalledWith(expect.any(Function));
+    vi.doUnmock("three");
+  });
+});
