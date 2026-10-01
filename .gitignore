@@ -47,3 +47,7 @@ next-env.d.ts
 # playwright
 /test-results/
 /playwright-report/
+
+# agent rules that `next dev` writes when an AI agent runs it
+/AGENTS.md
+/CLAUDE.md
