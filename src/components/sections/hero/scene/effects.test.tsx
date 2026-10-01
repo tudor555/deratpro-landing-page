@@ -81,6 +81,14 @@ describe("Sparkles", () => {
     expect(attribute(sparkles, "aAlpha").every((a) => a === 0)).toBe(true);
   });
 
+  it("frees its buffers, material and texture on unmount", async () => {
+    const { scene, renderer } = await renderScene(<Sparkles count={4} />);
+    const points = scene.children[0] as Points;
+    const spies = [vi.spyOn(points.geometry, "dispose"), vi.spyOn(points.material as never, "dispose")];
+    await renderer.unmount();
+    spies.forEach((spy) => expect(spy).toHaveBeenCalled());
+  });
+
   it("recycles the oldest sparkles when the pool is full", async () => {
     const { scene, store, playTo } = await renderScene(<Sparkles count={4} />);
     store.sparkleQueue.push({ x: 0, y: 0, z: 0, count: 6 });
