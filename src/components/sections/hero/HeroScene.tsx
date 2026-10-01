@@ -5,6 +5,10 @@ import { useState } from "react";
 import type { CalmRect } from "./engine/layout";
 import { sceneQuality } from "./engine/quality";
 import { CleanSweep } from "./scene/CleanSweep";
+import { installThreeConsole } from "./scene/threeConsole";
+
+// Runs once when this lazy chunk loads, before the canvas creates React Three Fiber's store.
+installThreeConsole();
 
 type HeroSceneProps = {
   active: boolean;
