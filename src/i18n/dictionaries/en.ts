@@ -7,6 +7,7 @@ export const en: Dictionary = {
       "Professional treatments for homes, offices and commercial spaces, with approved products and a written guarantee.",
   },
   common: {
+    brand: "DeratPro",
     phone: "0722 000 000",
     phoneHref: "tel:+40722000000",
     email: "contact@deratpro.ro",
@@ -30,8 +31,9 @@ export const en: Dictionary = {
     titleLine1: "Your home or business,",
     titleLine2: "pest-free.",
     titleEmphasis: "Guaranteed.",
+    // Rendered after the brand name: "DeratPro delivers professional treatments…"
     subline:
-      "Professional treatments for homes, offices and commercial spaces, with approved products and a written guarantee.",
+      "delivers professional treatments for homes, offices and commercial spaces, with approved products and a written guarantee.",
     primaryCta: "Get a free quote",
     secondaryCta: "Call now",
     rating: "4.9/5 from 300+ reviews",

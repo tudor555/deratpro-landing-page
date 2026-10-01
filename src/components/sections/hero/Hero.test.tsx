@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Hero } from "./Hero";
@@ -13,6 +13,15 @@ describe("Hero", () => {
     render(<Hero copy={ro.hero} common={ro.common} />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Casa sau afacerea ta, fără dăunători. Garantat.",
+    );
+  });
+
+  it("names the company inside the hero", () => {
+    render(<Hero copy={ro.hero} common={ro.common} />);
+    const hero = screen.getByRole("region", { name: /Casa sau afacerea ta/ });
+    expect(within(hero).getByText("DeratPro")).toBeVisible();
+    expect(within(hero).getByText(/oferă intervenții profesionale/)).toHaveTextContent(
+      "DeratPro oferă intervenții profesionale pentru case, birouri și spații comerciale",
     );
   });
 

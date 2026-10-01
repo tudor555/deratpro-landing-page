@@ -69,7 +69,9 @@ export function Hero({ copy, common }: HeroProps) {
             </span>
           </h1>
 
-          <p className="mt-6 max-w-[640px] text-[17px] leading-relaxed text-ink-muted lg:text-body-lg">{copy.subline}</p>
+          <p className="mt-6 max-w-[640px] text-[17px] leading-relaxed text-ink-muted lg:text-body-lg">
+            <strong className="font-semibold text-ink">{common.brand}</strong> {copy.subline}
+          </p>
 
           <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
             <Button href="#contact" trailingIcon={ArrowRight} fullWidth className="sm:w-auto">

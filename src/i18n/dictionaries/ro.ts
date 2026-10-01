@@ -5,6 +5,7 @@ export const ro = {
       "Intervenții profesionale pentru case, birouri și spații comerciale, cu substanțe avizate și garanție scrisă.",
   },
   common: {
+    brand: "DeratPro",
     phone: "0722 000 000",
     phoneHref: "tel:+40722000000",
     email: "contact@deratpro.ro",
@@ -28,8 +29,9 @@ export const ro = {
     titleLine1: "Casa sau afacerea ta,",
     titleLine2: "fără dăunători.",
     titleEmphasis: "Garantat.",
+    // Rendered after the brand name: "DeratPro oferă intervenții…"
     subline:
-      "Intervenții profesionale pentru case, birouri și spații comerciale, cu substanțe avizate și garanție scrisă.",
+      "oferă intervenții profesionale pentru case, birouri și spații comerciale, cu substanțe avizate și garanție scrisă.",
     primaryCta: "Cere ofertă gratuită",
     secondaryCta: "Sună acum",
     rating: "4.9/5 din 300+ recenzii",
