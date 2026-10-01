@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { FloatingCall } from "@/components/layout/FloatingCall";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { Contact } from "@/components/sections/Contact";
+import { Contact } from "@/components/sections/contact/Contact";
 import { Hero } from "@/components/sections/hero/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Services } from "@/components/sections/Services";

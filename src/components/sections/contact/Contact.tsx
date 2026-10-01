@@ -4,7 +4,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Section, sectionTitleId } from "@/components/ui/Section";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Glow, HexPattern } from "@/components/ui/Surfaces";
-import { ContactForm } from "@/features/contact/ContactForm";
+import { ContactForm } from "./ContactForm";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 type ContactProps = {
