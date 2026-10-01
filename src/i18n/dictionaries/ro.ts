@@ -155,7 +155,7 @@ export const ro = {
       hours: "L–V 08:00–20:00 · S 09:00–14:00",
       emergencies: "Urgențe 24/7",
       areaLabel: "Zonă deservită",
-      area: "București și Ilfov",
+      area: "Județele Bihor și Cluj",
     },
   },
   footer: {

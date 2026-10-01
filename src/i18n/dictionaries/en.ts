@@ -155,7 +155,7 @@ export const en: Dictionary = {
       hours: "Mon–Fri 08:00–20:00 · Sat 09:00–14:00",
       emergencies: "Emergencies 24/7",
       areaLabel: "Service area",
-      area: "Bucharest and Ilfov",
+      area: "Bihor and Cluj counties",
     },
   },
   footer: {
