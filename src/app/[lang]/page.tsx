@@ -2,9 +2,8 @@ import { notFound } from "next/navigation";
 import { FloatingCall } from "@/components/layout/FloatingCall";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { HeroBackground } from "@/components/hero/HeroBackground";
 import { Contact } from "@/components/sections/Contact";
-import { Hero } from "@/components/sections/Hero";
+import { Hero } from "@/components/sections/hero/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Services } from "@/components/sections/Services";
 import { StatsCard } from "@/components/sections/StatsCard";
@@ -27,7 +26,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
       </a>
       <Header lang={lang} copy={dict.header} common={dict.common} />
       <main id="main">
-        <Hero copy={dict.hero} common={dict.common} background={<HeroBackground />} />
+        <Hero copy={dict.hero} common={dict.common} />
         <StatsCard copy={dict.stats} />
         <Services copy={dict.services} />
         <WhyUs copy={dict.whyUs} />

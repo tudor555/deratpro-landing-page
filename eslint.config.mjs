@@ -12,7 +12,7 @@ const eslintConfig = defineConfig([
   },
   {
     // R3F scene code mutates three.js objects inside useFrame by design; these compiler rules target React state.
-    files: ["src/components/hero/scene/**"],
+    files: ["src/components/sections/hero/scene/**"],
     rules: {
       "react-hooks/immutability": "off",
       "react-hooks/purity": "off",

@@ -1,16 +1,14 @@
 import { ArrowRight, ChevronDown, Phone, ShieldCheck, Star } from "lucide-react";
-import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { EyebrowPill } from "@/components/ui/EyebrowPill";
 import { Icon } from "@/components/ui/Icon";
 import type { Dictionary } from "@/i18n/dictionaries";
+import { HeroBackground } from "./HeroBackground";
 
 type HeroProps = {
   copy: Dictionary["hero"];
   common: Dictionary["common"];
-  /** Decorative layer rendered behind the content (the 3D scene). */
-  background?: ReactNode;
 };
 
 function BrushUnderline() {
@@ -44,7 +42,7 @@ function Stars({ label }: { label: string }) {
   );
 }
 
-export function Hero({ copy, common, background }: HeroProps) {
+export function Hero({ copy, common }: HeroProps) {
   return (
     <section
       aria-labelledby="hero-title"
@@ -52,7 +50,7 @@ export function Hero({ copy, common, background }: HeroProps) {
     >
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 size-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(199_249_204/0.7)_0%,rgb(199_249_204/0)_65%)]" />
-        {background}
+        <HeroBackground />
         <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-b from-transparent to-background sm:h-40" />
       </div>
 

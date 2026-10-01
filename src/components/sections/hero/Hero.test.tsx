@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { getDictionary } from "@/i18n/dictionaries";
 import { Hero } from "./Hero";
+
+// The 3D layer has its own tests; here it would only need WebGL and media-query stubs.
+vi.mock("./HeroBackground", () => ({ HeroBackground: () => null }));
 
 const ro = getDictionary("ro");
 
