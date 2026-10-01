@@ -72,7 +72,7 @@ export function createSpriteMaterial(map: Texture, additive = false): ShaderMate
   });
 }
 
-/** Pixels per world unit at distance 1 for a perspective camera — what gl_PointSize needs. */
+/** Pixels per world unit at distance 1 for a perspective camera, as gl_PointSize needs it. */
 export function pointScale(canvasHeightPx: number, dpr: number, fovDegrees: number): number {
   return (canvasHeightPx * dpr) / (2 * Math.tan((fovDegrees * Math.PI) / 360));
 }

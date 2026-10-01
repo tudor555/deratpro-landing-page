@@ -2,7 +2,7 @@ import type { Dictionary } from "./ro";
 
 export const en: Dictionary = {
   meta: {
-    title: "DeratPro — Rodent control, pest control and disinfection",
+    title: "DeratPro | Rodent control, pest control and disinfection",
     description:
       "Professional treatments for homes, offices and commercial spaces, with approved products and a written guarantee.",
   },
@@ -52,7 +52,7 @@ export const en: Dictionary = {
   services: {
     eyebrow: "Services",
     title: "Everything you need for a clean, safe space",
-    intro: "Professional treatments tailored to every space — from apartments to warehouses and restaurants.",
+    intro: "Professional treatments tailored to every space, from apartments to warehouses and restaurants.",
     cta: "Request a quote",
     items: [
       {
@@ -81,7 +81,7 @@ export const en: Dictionary = {
   whyUs: {
     eyebrow: "Why us",
     title: "Why clients choose DeratPro",
-    intro: "We work clean, fast and fully documented — and the result is guaranteed in writing.",
+    intro: "We work clean, fast and fully documented, and the result is guaranteed in writing.",
     guarantee: {
       value: "6 months",
       title: "Written guarantee",
@@ -90,7 +90,7 @@ export const en: Dictionary = {
     },
     fast: {
       title: "Fast response",
-      text: "We reach you within 24 hours, and on the same day for emergencies — weekends included.",
+      text: "We reach you within 24 hours, and on the same day for emergencies, weekends included.",
       pill: "Emergencies 24/7",
     },
     items: [

@@ -7,7 +7,7 @@ function subscribeVisibility(onChange: () => void) {
   return () => document.removeEventListener("visibilitychange", onChange);
 }
 
-/** True while the element is on screen and the tab is visible — the only time a render loop is worth running. */
+/** True while the element is on screen and the tab is visible: the only time a render loop is worth running. */
 export function useSceneActive(ref: RefObject<Element | null>): boolean {
   const [inView, setInView] = useState(false);
   const tabVisible = useSyncExternalStore(

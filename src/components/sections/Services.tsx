@@ -31,7 +31,7 @@ export function Services({ copy }: { copy: Dictionary["services"] }) {
             </ul>
             <a
               href="#contact"
-              aria-label={`${copy.cta} — ${service.title}`}
+              aria-label={`${copy.cta}: ${service.title}`}
               className="mt-auto inline-flex items-center gap-1.5 self-start rounded-sm pt-6 font-semibold text-primary hover:text-primary-strong"
             >
               {copy.cta}

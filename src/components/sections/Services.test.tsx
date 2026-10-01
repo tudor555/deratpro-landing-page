@@ -21,7 +21,7 @@ describe("Services", () => {
       expect(within(card).getByRole("heading", { level: 3, name: service.title })).toBeInTheDocument();
       expect(within(card).getByText(service.description)).toBeInTheDocument();
       expect(within(card).getAllByRole("listitem").map((li) => li.textContent)).toEqual(service.features);
-      const link = within(card).getByRole("link", { name: `${ro.services.cta} — ${service.title}` });
+      const link = within(card).getByRole("link", { name: `${ro.services.cta}: ${service.title}` });
       expect(link).toHaveAttribute("href", "#contact");
     });
   });

@@ -39,6 +39,11 @@ describe("dictionaries", () => {
     expect(empty).toEqual([]);
   });
 
+  it.each(LOCALES)("keeps em dashes out of the %s copy", (locale) => {
+    const withDash = collectStrings(getDictionary(locale)).filter((text) => text.includes("\u2014"));
+    expect(withDash).toEqual([]);
+  });
+
   it("uses Romanian diacritics with comma-below, never cedilla", () => {
     const text = collectStrings(getDictionary("ro")).join(" ");
     expect(text).not.toMatch(/[şŞţŢ]/);

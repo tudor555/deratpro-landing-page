@@ -1,6 +1,6 @@
 import { type Curve, TubeGeometry, Vector3 } from "three";
 
-/** A tube along a curve whose radius shrinks linearly from `startRadius` to `endRadius` — tails, legs, antennae. */
+/** A tube along a curve whose radius shrinks linearly from `startRadius` to `endRadius`, for tails, legs and antennae. */
 export function taperTube(curve: Curve<Vector3>, segments: number, startRadius: number, endRadius: number, radial = 8) {
   const geometry = new TubeGeometry(curve, segments, 1, radial, false);
   const pos = geometry.attributes.position;

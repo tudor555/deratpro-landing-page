@@ -1,6 +1,6 @@
 export const ro = {
   meta: {
-    title: "DeratPro — Deratizare, dezinsecție și dezinfecție",
+    title: "DeratPro | Deratizare, dezinsecție și dezinfecție",
     description:
       "Intervenții profesionale pentru case, birouri și spații comerciale, cu substanțe avizate și garanție scrisă.",
   },
@@ -50,7 +50,7 @@ export const ro = {
   services: {
     eyebrow: "Servicii",
     title: "Tot ce ai nevoie pentru un spațiu curat și sigur",
-    intro: "Tratamente profesionale, adaptate fiecărui spațiu — de la apartamente la depozite și restaurante.",
+    intro: "Tratamente profesionale, adaptate fiecărui spațiu, de la apartamente la depozite și restaurante.",
     cta: "Solicită ofertă",
     items: [
       {
@@ -81,7 +81,7 @@ export const ro = {
   whyUs: {
     eyebrow: "De ce noi",
     title: "De ce aleg clienții DeratPro",
-    intro: "Lucrăm curat, rapid și documentat — iar rezultatul este garantat în scris.",
+    intro: "Lucrăm curat, rapid și documentat, iar rezultatul este garantat în scris.",
     guarantee: {
       value: "6 luni",
       title: "Garanție scrisă",
@@ -90,7 +90,7 @@ export const ro = {
     },
     fast: {
       title: "Intervenție rapidă",
-      text: "Ajungem la tine în maximum 24 de ore, iar pentru urgențe chiar în aceeași zi — inclusiv în weekend.",
+      text: "Ajungem la tine în maximum 24 de ore, iar pentru urgențe chiar în aceeași zi, inclusiv în weekend.",
       pill: "Urgențe 24/7",
     },
     items: [
